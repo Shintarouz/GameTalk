@@ -1,21 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 // Tutorial used : https://www.youtube.com/watch?v=whzomFgjT50
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public int scoreTester = 0;
+    public float moveSpeed;
+    private float originalMoveSpeed;
 
     public Rigidbody2D rb;
     public Animator animator;
 
     Vector2 movement; 
 
-    // Update is called once per frame
+    void Start()
+    {
+        originalMoveSpeed = moveSpeed;
+    }
+
     void Update()
     {
+        if (DialogueManager.instance != null && DialogueManager.instance.isDialogueActive)
+        {
+            moveSpeed = 0;
+            animator.SetFloat("Speed", 0);
+            return;
+        }
+        else
+        {
+            moveSpeed = originalMoveSpeed;
+        }
         // if movement on horizontal axis = -1 or 1 ( or 0 )
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
