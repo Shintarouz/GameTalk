@@ -10,15 +10,10 @@ using UnityEngine.SceneManagement;
 
 public class Interactable : MonoBehaviour
 {
-    public bool isInRange;
-    public KeyCode interactKey;
+    private bool isInRange;
+    private KeyCode interactKey;
     public UnityEvent interactAction;
     public int sceneBuildIndex;
-
-    void Start()
-    {
-        //
-    }
 
     public void sceneSwitch()
     {

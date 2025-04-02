@@ -1,0 +1,120 @@
+{
+    "inkVersion": 20,
+    "root": [
+        [
+            {
+                "->": "MAIN"
+            },
+            [
+                "done",
+                {
+                    "#f": 5,
+                    "#n": "g-0"
+                }
+            ],
+            null
+        ],
+        "done",
+        {
+            "MAIN": [
+                [
+                    "^Gespreksstructuren bepalen hoe een gesprek is opgebouwd.",
+                    {
+                        "#": "speaker: Leerstof"
+                    },
+                    "\n",
+                    "^Er zijn drie soorten gespreksstructuren:",
+                    {
+                        "#": "speaker: Leerstof"
+                    },
+                    "\n",
+                    "^Gesloten gesprek: Alles ligt vast, zoals bij een vragenlijst.",
+                    {
+                        "#": "speaker: Leerstof"
+                    },
+                    "\n",
+                    "^Halfopen gesprek: De opbouw ligt vast, maar er is ruimte voor eigen invulling. Bijvoorbeeld een stagegesprek.",
+                    {
+                        "#": "speaker: Leerstof"
+                    },
+                    "\n",
+                    "^Open gesprek: Beide partijen bepalen de inhoud en structuur. Bijvoorbeeld een brainstormsessie.",
+                    {
+                        "#": "speaker: Leerstof"
+                    },
+                    "\n",
+                    "^Dit was de theorie! Wil je opnieuw leren of stoppen met leren?",
+                    {
+                        "#": "speaker: Verteller"
+                    },
+                    "\n",
+                    "ev",
+                    "str",
+                    "^Opnieuw leren",
+                    "/str",
+                    "/ev",
+                    {
+                        "*": ".^.c-0",
+                        "flg": 4
+                    },
+                    "ev",
+                    "str",
+                    "^Stoppen met leren",
+                    "/str",
+                    "/ev",
+                    {
+                        "*": ".^.c-1",
+                        "flg": 4
+                    },
+                    {
+                        "c-0": [
+                            "\n",
+                            {
+                                "->": "chosen1"
+                            },
+                            {
+                                "#f": 5
+                            }
+                        ],
+                        "c-1": [
+                            "\n",
+                            {
+                                "->": "chosen2"
+                            },
+                            {
+                                "#f": 5
+                            }
+                        ]
+                    }
+                ],
+                {
+                    "#f": 1
+                }
+            ],
+            "chosen1": [
+                "^Succes met het leren!",
+                {
+                    "#": "speaker: Verteller"
+                },
+                "\n",
+                {
+                    "->": "MAIN"
+                },
+                {
+                    "#f": 1
+                }
+            ],
+            "chosen2": [
+                "^Succes met het leren!",
+                {
+                    "#": "speaker: Verteller"
+                },
+                "end",
+                {
+                    "#f": 1
+                }
+            ]
+        }
+    ],
+    "listDefs": {}
+}

@@ -1,0 +1,125 @@
+{
+    "inkVersion": 20,
+    "root": [
+        [
+            {
+                "->": "MAIN"
+            },
+            [
+                "done",
+                {
+                    "#f": 5,
+                    "#n": "g-0"
+                }
+            ],
+            null
+        ],
+        "done",
+        {
+            "MAIN": [
+                [
+                    "^Gespreksvoering is de manier waarop je een gesprek voert.",
+                    {
+                        "#": "speaker: Leerstof"
+                    },
+                    "\n",
+                    "^Het gaat om hoe je luistert, vragen stelt, en reageert op de ander.",
+                    {
+                        "#": "speaker: Leerstof"
+                    },
+                    "\n",
+                    "^Een goede gespreksvoering is duidelijk, respectvol, en gericht op samenwerking.",
+                    {
+                        "#": "speaker: Leerstof"
+                    },
+                    "\n",
+                    "^Belangrijke onderdelen van gespreksvoering zijn actief luisteren, open vragen stellen, en samenvatten wat de ander zegt.",
+                    {
+                        "#": "speaker: Leerstof"
+                    },
+                    "\n",
+                    "^Door goed te luisteren, toon je interesse en bouw je vertrouwen op. Open vragen helpen om meer informatie te krijgen. Samenvatten zorgt ervoor dat je de ander goed begrijpt.",
+                    {
+                        "#": "speaker: Leerstof"
+                    },
+                    "\n",
+                    "^Gespreksvoering is belangrijk in verschillende situaties, zoals bij samenwerken, conflicten oplossen, of iemand ondersteunen.",
+                    {
+                        "#": "speaker: Leerstof"
+                    },
+                    "\n",
+                    "^Dit was de theorie! Wil je opnieuw leren of stoppen met leren?",
+                    {
+                        "#": "speaker: Verteller"
+                    },
+                    "\n",
+                    "ev",
+                    "str",
+                    "^Opnieuw leren",
+                    "/str",
+                    "/ev",
+                    {
+                        "*": ".^.c-0",
+                        "flg": 4
+                    },
+                    "ev",
+                    "str",
+                    "^Stoppen met leren",
+                    "/str",
+                    "/ev",
+                    {
+                        "*": ".^.c-1",
+                        "flg": 4
+                    },
+                    {
+                        "c-0": [
+                            "\n",
+                            {
+                                "->": "chosen1"
+                            },
+                            {
+                                "#f": 5
+                            }
+                        ],
+                        "c-1": [
+                            "\n",
+                            {
+                                "->": "chosen2"
+                            },
+                            {
+                                "#f": 5
+                            }
+                        ]
+                    }
+                ],
+                {
+                    "#f": 1
+                }
+            ],
+            "chosen1": [
+                "^Succes met het leren!",
+                {
+                    "#": "speaker: Verteller"
+                },
+                "\n",
+                {
+                    "->": "MAIN"
+                },
+                {
+                    "#f": 1
+                }
+            ],
+            "chosen2": [
+                "^Succes met het leren!",
+                {
+                    "#": "speaker: Verteller"
+                },
+                "end",
+                {
+                    "#f": 1
+                }
+            ]
+        }
+    ],
+    "listDefs": {}
+}
