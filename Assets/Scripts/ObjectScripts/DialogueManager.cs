@@ -19,15 +19,16 @@ public class DialogueManager : MonoBehaviour
 
     private Sentences[] DialogueSentences;
     private int index;
-    private int maxTextSize = 400;
 
     public GameObject contButton1;
     public GameObject contButton2;
     public GameObject contButton3;
+    public GameObject NextButton;
     private TextMeshProUGUI contButton1Text;
     private TextMeshProUGUI contButton2Text;
     private TextMeshProUGUI contButton3Text;
 
+    private bool isTyping = false;
     void Awake()
     {
         if ( instance == null )
@@ -44,6 +45,7 @@ public class DialogueManager : MonoBehaviour
         contButton1.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => OnAnswerClicked(contButton1Text.text));
         contButton2.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => OnAnswerClicked(contButton2Text.text));
         contButton3.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => DisplayNextSentence());
+        NextButton.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => NextPage());
     }
 
 
@@ -86,11 +88,6 @@ public class DialogueManager : MonoBehaviour
             contButton1Text.text = wronganswer;
             contButton2Text.text = rightanswer;
         }
-
-        if (sentence.Length >= maxTextSize)
-        {
-
-        }
         StopAllCoroutines();
         dialogueText.text = "";
         StartCoroutine(Typing(sentence));
@@ -104,11 +101,15 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator Typing(string sentence)
     {
+        isTyping = true;
+        dialogueText.text = "";
+
         foreach(char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.001f);
         }
+        isTyping = false;
     }
 
     public void EndDialogue()
@@ -183,6 +184,47 @@ public class DialogueManager : MonoBehaviour
             contButton3.SetActive(true);
 
         }
+    }
+
+    public void NextPage()
+    {
+        if (isTyping)
+        {
+            StopAllCoroutines();
+            dialogueText.text = DialogueSentences[index].sentence;
+            isTyping = false;
+            dialogueText.ForceMeshUpdate();
+            NextButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Page {dialogueText.pageToDisplay}/{dialogueText.textInfo.pageCount}";
+        }
+        else
+        {
+            if (dialogueText.pageToDisplay == 0)
+            {
+                dialogueText.pageToDisplay = 1;
+            }
+            else if (dialogueText.pageToDisplay < dialogueText.textInfo.pageCount)
+            {
+                dialogueText.pageToDisplay++;
+            }
+            else
+            {
+                dialogueText.pageToDisplay = 1;
+            }
+        }
+        NextButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Page {dialogueText.pageToDisplay}/{dialogueText.textInfo.pageCount}";
+        // if (dialogueText.pageToDisplay == 0)
+        // {
+        //     dialogueText.pageToDisplay = 1;
+        // }
+        // if (dialogueText.pageToDisplay < dialogueText.textInfo.pageCount)
+        // {
+        //     dialogueText.pageToDisplay++;
+        // }
+        // else if (dialogueText.pageToDisplay == dialogueText.textInfo.pageCount)
+        // {
+        //     dialogueText.pageToDisplay = 1;
+        // }
+        // NextButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Page {dialogueText.pageToDisplay}/{dialogueText.textInfo.pageCount}";
     }
 
     public string[] Chunker(string input)
