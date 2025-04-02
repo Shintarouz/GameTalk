@@ -11,7 +11,6 @@ public class NPCScript : MonoBehaviour
     public string npcName;
 
     [SerializeField] private Quest[] quest;
-    [SerializeField] private Dialogue dialogue;
     private bool playerIsClose;
 
 
@@ -31,7 +30,7 @@ public class NPCScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && playerIsClose && !DialogueManager.instance.dialoguePanel.activeSelf)
         {
-            DialogueManager.instance.StartDialogue(npcName, npcID, quest[0]);
+            DialogueManager.instance.StartDialogue(npcName, npcID, quest[0], sentences);
         }
 
 

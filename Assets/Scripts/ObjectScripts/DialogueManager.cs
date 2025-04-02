@@ -9,18 +9,24 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
     public TextMeshProUGUI nameText;
-    public GameObject contButton;
     public TextMeshProUGUI missionText;
-
-    private Queue<string> sentences;
     public bool isDialogueActive = false;
 
 
-    private DiaData diadata;
     private QuestManager questManager;
     private Quest currentQuest;
 
 
+    private Sentences[] DialogueSentences;
+    private int index;
+    private int maxTextSize = 400;
+
+    public GameObject contButton1;
+    public GameObject contButton2;
+    public GameObject contButton3;
+    private TextMeshProUGUI contButton1Text;
+    private TextMeshProUGUI contButton2Text;
+    private TextMeshProUGUI contButton3Text;
 
     void Awake()
     {
@@ -28,46 +34,70 @@ public class DialogueManager : MonoBehaviour
         {
             instance = this;
         }
-        sentences = new Queue<string>();
         dialoguePanel.SetActive(false);
-        diadata = FindObjectOfType<DiaData>();
         questManager = FindObjectOfType<QuestManager>();
+
+        contButton1Text = contButton1.GetComponentInChildren<TextMeshProUGUI>();
+        contButton2Text = contButton2.GetComponentInChildren<TextMeshProUGUI>();
+        contButton3Text = contButton3.GetComponentInChildren<TextMeshProUGUI>();
+
+        contButton1.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => OnAnswerClicked(contButton1Text.text));
+        contButton2.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => OnAnswerClicked(contButton2Text.text));
+        contButton3.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => DisplayNextSentence());
     }
 
 
-    public void StartDialogue(string npcName, int npcID, Quest quest)
+    public void StartDialogue(string npcName, int npcID, Quest quest, Sentences[] arraySentences)
     {
+        index = 0;
         if (isDialogueActive) return;
+
+        DialogueSentences = arraySentences;
 
         currentQuest = quest;
         isDialogueActive = true;
         dialoguePanel.SetActive(true);
+        contButton3.SetActive(false);
         nameText.text = npcName;
-        sentences.Clear();
-
-        string[] dialogue = diadata.GetDialogueByNPCID(npcID);
-        // string[] dialogue = diadata.GetStoryDialogue()
-        foreach(string sentence in dialogue)
-        {
-            sentences.Enqueue(sentence);
-        }
         DisplayNextSentence();
     }
 
     public void DisplayNextSentence()
     {
         // PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
-        if(sentences.Count == 0)
+        if(index >= DialogueSentences.Length)
         {
             // playerMovement.scoreTester += 5;
             EndDialogue();
             return;
         }
-        
-        string sentence = sentences.Dequeue();
+        string sentence = DialogueSentences[index].sentence;
+        string rightanswer = DialogueSentences[index].rightAnswer;
+        string wronganswer = DialogueSentences[index].wrongAnswer;
+
+        int randomChoice = Random.Range(0, 2);
+        if (randomChoice == 0)
+        {
+            contButton1Text.text = rightanswer;
+            contButton2Text.text = wronganswer;
+        }
+        else
+        {
+            contButton1Text.text = wronganswer;
+            contButton2Text.text = rightanswer;
+        }
+
+        if (sentence.Length >= maxTextSize)
+        {
+
+        }
         StopAllCoroutines();
         dialogueText.text = "";
         StartCoroutine(Typing(sentence));
+        
+        contButton1.SetActive(true);
+        contButton2.SetActive(true);
+        contButton3.SetActive(false);
     }
 
 
@@ -77,17 +107,18 @@ public class DialogueManager : MonoBehaviour
         foreach(char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.001f);
         }
     }
-
-
 
     public void EndDialogue()
     {
         
         isDialogueActive = false;
         dialoguePanel.SetActive(false);
+        contButton1.SetActive(false);
+        contButton2.SetActive(false);
+
         if (currentQuest == null) return;
         questManager.AddQuest(currentQuest);
         currentQuest = null;        
@@ -107,6 +138,67 @@ public class DialogueManager : MonoBehaviour
         {
             missionText.text += $"\nQuest: {q.questName}\nObjective: {q.description}\nStatus: {(q.isCompleted ? "Completed" : "Active")}\n";
         }
-        //missionText.text = $"Mission: {questName}\nObjective: {questDescription}";
+        
+    }
+
+    public void DisplayResponse(string response)
+    {
+        StopAllCoroutines();
+        dialogueText.text = "";
+        if (response != "")
+        {
+            StartCoroutine(Typing(response));
+        }
+        else
+        {
+            StartCoroutine(Typing("{Missing a response, please add a response}"));
+        }
+    }
+    
+    public void OnAnswerClicked(string buttonText)
+    {
+        string rightAnswerResponse = DialogueSentences[index].rightAnswerResponse;
+        string wrongAnswerResponse = DialogueSentences[index].wrongAnswerResponse;
+        string CA = DialogueSentences[index].rightAnswer;
+
+        if(buttonText == CA)
+        {
+            index = index + 1;
+            contButton1.SetActive(false);
+            contButton2.SetActive(false);
+            contButton3.SetActive(true);
+            DisplayResponse(rightAnswerResponse);
+            // DisplayNextSentence();
+        }
+        else
+        {
+            if (index > 0)
+            {
+                index = index - 1;
+                // DisplayNextSentence();
+            }
+            DisplayResponse(wrongAnswerResponse);
+            contButton1.SetActive(false);
+            contButton2.SetActive(false);
+            contButton3.SetActive(true);
+
+        }
+    }
+
+    public string[] Chunker(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return new string[0];
+        }
+
+        List<string> chunks = new List<string>();
+        for (int i = 0; i < input.Length; i += 400)
+        {
+            int length = Mathf.Min(400, input.Length - i );
+            chunks.Add(input.Substring(i, length));
+        }
+
+        return chunks.ToArray();
     }
 }
