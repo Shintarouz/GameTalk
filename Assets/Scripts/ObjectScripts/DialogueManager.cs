@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
+
 
 public class DialogueManager : MonoBehaviour
 {
@@ -29,6 +31,7 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI contButton3Text;
 
     private bool isTyping = false;
+
     void Awake()
     {
         if ( instance == null )
@@ -37,7 +40,6 @@ public class DialogueManager : MonoBehaviour
         }
         dialoguePanel.SetActive(false);
         questManager = FindObjectOfType<QuestManager>();
-
         contButton1Text = contButton1.GetComponentInChildren<TextMeshProUGUI>();
         contButton2Text = contButton2.GetComponentInChildren<TextMeshProUGUI>();
         contButton3Text = contButton3.GetComponentInChildren<TextMeshProUGUI>();
@@ -49,23 +51,26 @@ public class DialogueManager : MonoBehaviour
     }
 
 
-    public void StartDialogue(string npcName, int npcID, Quest quest, Sentences[] arraySentences)
+    public void StartDialogue(Quest quest, Sentences[] arraySentences)
     {
+        dialogueText.pageToDisplay = 1;
         index = 0;
         if (isDialogueActive) return;
 
         DialogueSentences = arraySentences;
-
         currentQuest = quest;
         isDialogueActive = true;
         dialoguePanel.SetActive(true);
         contButton3.SetActive(false);
-        nameText.text = npcName;
+        int npcID = DialogueSentences[index].npcID;
+        npcIDChecker(npcID);
         DisplayNextSentence();
+        UpdateNextButtonText();
     }
 
     public void DisplayNextSentence()
     {
+        dialogueText.pageToDisplay = 1;
         // PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
         if(index >= DialogueSentences.Length)
         {
@@ -73,6 +78,8 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
+        int npcID = DialogueSentences[index].npcID;
+        npcIDChecker(npcID);
         string sentence = DialogueSentences[index].sentence;
         string rightanswer = DialogueSentences[index].rightAnswer;
         string wronganswer = DialogueSentences[index].wrongAnswer;
@@ -95,6 +102,7 @@ public class DialogueManager : MonoBehaviour
         contButton1.SetActive(true);
         contButton2.SetActive(true);
         contButton3.SetActive(false);
+        UpdateNextButtonText();
     }
 
 
@@ -154,6 +162,8 @@ public class DialogueManager : MonoBehaviour
         {
             StartCoroutine(Typing("{Missing a response, please add a response}"));
         }
+        dialogueText.pageToDisplay = 1;
+        UpdateNextButtonText();
     }
     
     public void OnAnswerClicked(string buttonText)
@@ -169,14 +179,12 @@ public class DialogueManager : MonoBehaviour
             contButton2.SetActive(false);
             contButton3.SetActive(true);
             DisplayResponse(rightAnswerResponse);
-            // DisplayNextSentence();
         }
         else
         {
             if (index > 0)
             {
                 index = index - 1;
-                // DisplayNextSentence();
             }
             DisplayResponse(wrongAnswerResponse);
             contButton1.SetActive(false);
@@ -194,7 +202,6 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text = DialogueSentences[index].sentence;
             isTyping = false;
             dialogueText.ForceMeshUpdate();
-            NextButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Page {dialogueText.pageToDisplay}/{dialogueText.textInfo.pageCount}";
         }
         else
         {
@@ -211,36 +218,36 @@ public class DialogueManager : MonoBehaviour
                 dialogueText.pageToDisplay = 1;
             }
         }
-        NextButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Page {dialogueText.pageToDisplay}/{dialogueText.textInfo.pageCount}";
-        // if (dialogueText.pageToDisplay == 0)
-        // {
-        //     dialogueText.pageToDisplay = 1;
-        // }
-        // if (dialogueText.pageToDisplay < dialogueText.textInfo.pageCount)
-        // {
-        //     dialogueText.pageToDisplay++;
-        // }
-        // else if (dialogueText.pageToDisplay == dialogueText.textInfo.pageCount)
-        // {
-        //     dialogueText.pageToDisplay = 1;
-        // }
-        // NextButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Page {dialogueText.pageToDisplay}/{dialogueText.textInfo.pageCount}";
+        UpdateNextButtonText();
     }
 
-    public string[] Chunker(string input)
+    public void npcIDChecker(int npcID)
     {
-        if (string.IsNullOrEmpty(input))
+        switch (npcID)
         {
-            return new string[0];
+            case 1:
+                nameText.text = "John";
+                break;
+            case 2:
+                nameText.text = "Marcus";
+                break;
+            case 3:
+                nameText.text = "Stewart";
+                break;
+            case 99:
+                nameText.text = "Verteller";
+                break;
+            default:
+                nameText.text = "Error";
+                break;
         }
-
-        List<string> chunks = new List<string>();
-        for (int i = 0; i < input.Length; i += 400)
-        {
-            int length = Mathf.Min(400, input.Length - i );
-            chunks.Add(input.Substring(i, length));
-        }
-
-        return chunks.ToArray();
+    }
+    void Update()
+    {
+        UpdateNextButtonText();
+    }
+    public void UpdateNextButtonText()
+    {
+        NextButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Page {dialogueText.pageToDisplay}/{dialogueText.textInfo.pageCount}";
     }
 }
