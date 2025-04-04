@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    public GameObject QuestMenu;
     public List<Quest> activeQuests = new();
     public List<Quest> completedQuests = new();
 
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if(QuestMenu)
+            QuestMenu.SetActive(!QuestMenu.activeSelf);
+        }
+    }
 
-   public void CompleteQuest(string questName)
+    public void CompleteQuest(string questName)
     {
         Quest quest = activeQuests.Find(q => q.questName == questName);
         if (quest != null)

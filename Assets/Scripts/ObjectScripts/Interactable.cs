@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class Interactable : MonoBehaviour
 {
     private bool isInRange;
-    private KeyCode interactKey;
+    private KeyCode interactKey = KeyCode.E;
     public UnityEvent interactAction;
     public int sceneBuildIndex;
 

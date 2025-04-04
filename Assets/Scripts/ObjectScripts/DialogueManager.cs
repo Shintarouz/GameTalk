@@ -143,11 +143,20 @@ public class DialogueManager : MonoBehaviour
         
         missionText.text = "";
 
-        foreach (Quest q in questManager.activeQuests)
+        for(int i = 0; i < questManager.activeQuests.Count; i++)
         {
-            missionText.text += $"\nQuest: {q.questName}\nObjective: {q.description}\nStatus: {(q.isCompleted ? "Completed" : "Active")}\n";
+            if (i > 0)
+            {
+                missionText.text += "\n";
+            }
+            Quest q = questManager.activeQuests[i];
+            missionText.text += $"Quest: {q.questName}\nDoel: {q.description}\n"; // \nStatus: {(q.isCompleted ? "Completed" : "Active")}
         }
-        
+
+        // foreach (Quest q in questManager.activeQuests)
+        // {
+        //     missionText.text += $"Quest: {q.questName}\nObjective: {q.description}\nStatus: {(q.isCompleted ? "Completed" : "Active")}\n";
+        // }
     }
 
     public void DisplayResponse(string response)
