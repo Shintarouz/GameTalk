@@ -15,7 +15,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI missionText;
     public bool isDialogueActive = false;
     public Image npcIcon;
-    public static Texture2D[] npcIcons;
+    public Sprite[] npcIcons;
     private QuestManager questManager;
     private Quest currentQuest;
 
@@ -130,7 +130,7 @@ public class DialogueManager : MonoBehaviour
         contButton2.SetActive(false);
 
         if (currentQuest == null) return;
-        questManager.AddQuest(currentQuest);
+        // questManager.AddQuest(currentQuest);
         currentQuest = null;        
     }
 
@@ -236,24 +236,24 @@ public class DialogueManager : MonoBehaviour
         switch (npcID)
         {
             case 1:
-                nameText.text = "John";
+                nameText.text = "John police";
                 npcIcon.sprite = npcIcons[0];
-                // npcIcon.sprite
                 break;
             case 2:
-                nameText.text = "Marcus";
+                nameText.text = "Marcus head";
                 npcIcon.sprite = npcIcons[1];
                 break;
             case 3:
-                nameText.text = "Stewart";
+                nameText.text = "Stewart bed";
                 npcIcon.sprite = npcIcons[2];
                 break;
             case 99:
-                nameText.text = "Verteller";
+                nameText.text = "Verteller beachboy";
                 npcIcon.sprite = npcIcons[3];
                 break;
             default:
                 nameText.text = "Error";
+                npcIcon.sprite = npcIcons[4];
                 break;
         }
     }

@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public int scoreTester = 15;
+    public int scoreTester;
     public float moveSpeed;
     private float originalMoveSpeed;
 

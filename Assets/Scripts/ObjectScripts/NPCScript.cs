@@ -14,6 +14,7 @@ public class NPCScript : MonoBehaviour
 
     void Update()
     {
+        PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
         if (Input.GetKeyDown(KeyCode.B) && playerIsClose)
         {
             questManager.CompleteQuest(quest[0].questName);
@@ -21,7 +22,10 @@ public class NPCScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C) && playerIsClose)
         {
-            questManager.AddQuest(quest[0]);
+            if (playerMovement.scoreTester >= quest[0].pointsRequirement)
+            {
+                questManager.AddQuest(quest[0]);
+            }
         }
 
 
