@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
 
@@ -13,8 +14,8 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI missionText;
     public bool isDialogueActive = false;
-
-
+    public Image npcIcon;
+    public static Texture2D[] npcIcons;
     private QuestManager questManager;
     private Quest currentQuest;
 
@@ -236,15 +237,20 @@ public class DialogueManager : MonoBehaviour
         {
             case 1:
                 nameText.text = "John";
+                npcIcon.sprite = npcIcons[0];
+                // npcIcon.sprite
                 break;
             case 2:
                 nameText.text = "Marcus";
+                npcIcon.sprite = npcIcons[1];
                 break;
             case 3:
                 nameText.text = "Stewart";
+                npcIcon.sprite = npcIcons[2];
                 break;
             case 99:
                 nameText.text = "Verteller";
+                npcIcon.sprite = npcIcons[3];
                 break;
             default:
                 nameText.text = "Error";
