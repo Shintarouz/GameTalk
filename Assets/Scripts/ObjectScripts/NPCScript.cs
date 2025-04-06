@@ -9,11 +9,23 @@ public class NPCScript : MonoBehaviour
     public QuestManager questManager;
     [SerializeField] private Quest[] quest;
     private bool playerIsClose;
+    [SerializeField] private SpriteRenderer questMarkerSprite;
 
 
 
     void Update()
     {
+
+        if (!questManager.IsQuestActive(quest[0].questName) &&
+            !questManager.completedQuests.Exists(q => q.questName == quest[0].questName))
+        {
+            questMarkerSprite.enabled = true;
+        }
+        else
+        {
+            questMarkerSprite.enabled = false;
+        }
+
         PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
         if (Input.GetKeyDown(KeyCode.B) && playerIsClose)
         {

@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class QuestManager : MonoBehaviour
 {
     public GameObject QuestMenu;
+    public GameObject PointsMenu;
+    public GameObject OptionsMenu;
+    public TextMeshProUGUI PointsText;
     public List<Quest> activeQuests = new();
     public List<Quest> completedQuests = new();
 
@@ -13,11 +17,25 @@ public class QuestManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
+            DisplayPoints();
+            if(PointsMenu)
+            PointsMenu.SetActive(!PointsMenu.activeSelf);
+
             if(QuestMenu)
+            // PointsMenu.setActive(!PointsMenu.activeSelf);
             QuestMenu.SetActive(!QuestMenu.activeSelf);
         }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            if(OptionsMenu)
+            OptionsMenu.SetActive(!OptionsMenu.activeSelf);
+        }
     }
-
+    public void DisplayPoints()
+    {
+        PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
+        PointsText.text = playerMovement.scoreTester.ToString();
+    }
     public void CompleteQuest(string questName)
     {
         Quest quest = activeQuests.Find(q => q.questName == questName);

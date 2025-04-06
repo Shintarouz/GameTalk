@@ -10,6 +10,7 @@ public class Sentences
     public string rightAnswerResponse;
     public string wrongAnswerResponse;
     public int npcID;
+    [Multiline]
     public string sentence;
     public string rightAnswer;
     public string wrongAnswer;

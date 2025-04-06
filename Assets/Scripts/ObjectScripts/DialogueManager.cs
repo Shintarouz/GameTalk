@@ -16,7 +16,7 @@ public class DialogueManager : MonoBehaviour
     public bool isDialogueActive = false;
     public Image npcIcon;
     public Sprite[] npcIcons;
-    private QuestManager questManager;
+    public QuestManager questManager;
     private Quest currentQuest;
 
 
@@ -26,12 +26,13 @@ public class DialogueManager : MonoBehaviour
     public GameObject contButton1;
     public GameObject contButton2;
     public GameObject contButton3;
+    public GameObject contButton4;
     public GameObject NextButton;
     private TextMeshProUGUI contButton1Text;
     private TextMeshProUGUI contButton2Text;
     private TextMeshProUGUI contButton3Text;
 
-    private bool isTyping = false;
+    // private bool isTyping = false;
 
     void Awake()
     {
@@ -48,13 +49,19 @@ public class DialogueManager : MonoBehaviour
         contButton1.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => OnAnswerClicked(contButton1Text.text));
         contButton2.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => OnAnswerClicked(contButton2Text.text));
         contButton3.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => DisplayNextSentence());
+        contButton4.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => ContinueButton());
         NextButton.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => NextPage());
     }
 
-
+    public void ContinueButton()
+    {
+        index++;
+        DisplayNextSentence();
+        contButton3.SetActive(false);
+        UpdateNextButtonText();
+    }
     public void StartDialogue(Quest quest, Sentences[] arraySentences)
     {
-        dialogueText.pageToDisplay = 1;
         index = 0;
         if (isDialogueActive) return;
 
@@ -72,10 +79,11 @@ public class DialogueManager : MonoBehaviour
     public void DisplayNextSentence()
     {
         dialogueText.pageToDisplay = 1;
-        // PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
+        PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
         if(index >= DialogueSentences.Length)
         {
-            // playerMovement.scoreTester += 5;
+            playerMovement.scoreTester += 5;
+            questManager.DisplayPoints();
             EndDialogue();
             return;
         }
@@ -96,10 +104,13 @@ public class DialogueManager : MonoBehaviour
             contButton1Text.text = wronganswer;
             contButton2Text.text = rightanswer;
         }
-        StopAllCoroutines();
-        dialogueText.text = "";
-        StartCoroutine(Typing(sentence));
-        
+        // StopAllCoroutines();
+        // dialogueText.text = "";
+
+        dialogueText.text = sentence;
+        dialogueText.ForceMeshUpdate();
+        // StartCoroutine(Typing(sentence));
+
         contButton1.SetActive(true);
         contButton2.SetActive(true);
         contButton3.SetActive(false);
@@ -108,18 +119,18 @@ public class DialogueManager : MonoBehaviour
 
 
 
-    IEnumerator Typing(string sentence)
-    {
-        isTyping = true;
-        dialogueText.text = "";
+    // IEnumerator Typing(string sentence)
+    // {
+    //     isTyping = true;
+    //     dialogueText.text = "";
 
-        foreach(char letter in sentence.ToCharArray())
-        {
-            dialogueText.text += letter;
-            yield return new WaitForSeconds(0.001f);
-        }
-        isTyping = false;
-    }
+    //     foreach(char letter in sentence.ToCharArray())
+    //     {
+    //         dialogueText.text += letter;
+    //         yield return new WaitForSeconds(0.001f);
+    //     }
+    //     isTyping = false;
+    // }
 
     public void EndDialogue()
     {
@@ -153,26 +164,25 @@ public class DialogueManager : MonoBehaviour
             Quest q = questManager.activeQuests[i];
             missionText.text += $"Quest: {q.questName}\nDoel: {q.description}\n"; // \nStatus: {(q.isCompleted ? "Completed" : "Active")}
         }
-
-        // foreach (Quest q in questManager.activeQuests)
-        // {
-        //     missionText.text += $"Quest: {q.questName}\nObjective: {q.description}\nStatus: {(q.isCompleted ? "Completed" : "Active")}\n";
-        // }
     }
 
     public void DisplayResponse(string response)
     {
-        StopAllCoroutines();
-        dialogueText.text = "";
-        if (response != "")
-        {
-            StartCoroutine(Typing(response));
-        }
-        else
-        {
-            StartCoroutine(Typing("{Missing a response, please add a response}"));
-        }
+        // StopAllCoroutines();
+        // dialogueText.text = "";
+        // if (response != "")
+        // {
+        //     StartCoroutine(Typing(response));
+        // }
+        // else
+        // {
+        //     StartCoroutine(Typing("{Missing a response, please add a response}"));
+        // }
+        dialogueText.text = string.IsNullOrEmpty(response)
+            ? "{missing response}"
+            : response;
         dialogueText.pageToDisplay = 1;
+        dialogueText.ForceMeshUpdate();
         UpdateNextButtonText();
     }
     
@@ -189,6 +199,7 @@ public class DialogueManager : MonoBehaviour
             contButton2.SetActive(false);
             contButton3.SetActive(true);
             DisplayResponse(rightAnswerResponse);
+            UpdateNextButtonText();
         }
         else
         {
@@ -200,33 +211,33 @@ public class DialogueManager : MonoBehaviour
             contButton1.SetActive(false);
             contButton2.SetActive(false);
             contButton3.SetActive(true);
+            UpdateNextButtonText();
 
         }
     }
 
     public void NextPage()
     {
-        if (isTyping)
+        // if (isTyping)
+        // {
+        //     StopAllCoroutines();
+        //     dialogueText.text = DialogueSentences[index].sentence;
+        //     isTyping = false;
+        //     dialogueText.ForceMeshUpdate();
+        // }
+        // else
+        // {
+        if (dialogueText.pageToDisplay == 0)
         {
-            StopAllCoroutines();
-            dialogueText.text = DialogueSentences[index].sentence;
-            isTyping = false;
-            dialogueText.ForceMeshUpdate();
+            dialogueText.pageToDisplay = 1;
+        }
+        else if (dialogueText.pageToDisplay < dialogueText.textInfo.pageCount)
+        {
+            dialogueText.pageToDisplay++;
         }
         else
         {
-            if (dialogueText.pageToDisplay == 0)
-            {
-                dialogueText.pageToDisplay = 1;
-            }
-            else if (dialogueText.pageToDisplay < dialogueText.textInfo.pageCount)
-            {
-                dialogueText.pageToDisplay++;
-            }
-            else
-            {
-                dialogueText.pageToDisplay = 1;
-            }
+            dialogueText.pageToDisplay = 1;
         }
         UpdateNextButtonText();
     }
@@ -236,33 +247,35 @@ public class DialogueManager : MonoBehaviour
         switch (npcID)
         {
             case 1:
-                nameText.text = "John police";
+                nameText.text = "Verteller";
                 npcIcon.sprite = npcIcons[0];
                 break;
             case 2:
-                nameText.text = "Marcus head";
+                nameText.text = "Police";
                 npcIcon.sprite = npcIcons[1];
                 break;
             case 3:
-                nameText.text = "Stewart bed";
+                nameText.text = "Head";
                 npcIcon.sprite = npcIcons[2];
                 break;
-            case 99:
-                nameText.text = "Verteller beachboy";
+            case 4:
+                nameText.text = "BeachBoy";
                 npcIcon.sprite = npcIcons[3];
                 break;
             default:
                 nameText.text = "Error";
-                npcIcon.sprite = npcIcons[4];
+                npcIcon.sprite = npcIcons[3];
                 break;
         }
     }
     void Update()
     {
-        UpdateNextButtonText();
+        // Debug.Log(index);
     }
     public void UpdateNextButtonText()
     {
         NextButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Page {dialogueText.pageToDisplay}/{dialogueText.textInfo.pageCount}";
+        dialogueText.ForceMeshUpdate();
+        Debug.Log("updates next button");
     }
 }
