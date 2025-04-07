@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 
 public class DialogueManager : MonoBehaviour
 {
+    // public NPCScript NPCscript;
     public static DialogueManager instance;
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
@@ -17,7 +18,7 @@ public class DialogueManager : MonoBehaviour
     public Image npcIcon;
     public Sprite[] npcIcons;
     public QuestManager questManager;
-    private Quest currentQuest;
+    // private Quest currentQuest;
 
 
     private Sentences[] DialogueSentences;
@@ -31,8 +32,6 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI contButton1Text;
     private TextMeshProUGUI contButton2Text;
     private TextMeshProUGUI contButton3Text;
-
-    // private bool isTyping = false;
 
     void Awake()
     {
@@ -60,13 +59,13 @@ public class DialogueManager : MonoBehaviour
         contButton3.SetActive(false);
         UpdateNextButtonText();
     }
-    public void StartDialogue(Quest quest, Sentences[] arraySentences)
+    public void StartDialogue(Sentences[] arraySentences)
     {
         index = 0;
         if (isDialogueActive) return;
 
         DialogueSentences = arraySentences;
-        currentQuest = quest;
+        // currentQuest = quest;
         isDialogueActive = true;
         dialoguePanel.SetActive(true);
         contButton3.SetActive(false);
@@ -134,15 +133,22 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        
+        // NPCScript NPCScript = FindObjectOfType<NPCScript>();
         isDialogueActive = false;
         dialoguePanel.SetActive(false);
         contButton1.SetActive(false);
         contButton2.SetActive(false);
+        // NPCscript.QuestGiver();
+    
 
-        if (currentQuest == null) return;
-        // questManager.AddQuest(currentQuest);
-        currentQuest = null;        
+        // if (currentQuest == null) 
+        // {
+        //     return;
+        // }
+        // else
+        // {
+        //     questManager.AddQuest(currentQuest);
+        // }
     }
 
     public void DisplayQuests()

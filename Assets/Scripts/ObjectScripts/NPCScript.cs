@@ -11,21 +11,35 @@ public class NPCScript : MonoBehaviour
     private bool playerIsClose;
     [SerializeField] private SpriteRenderer questMarkerSprite;
 
-
-
-    void Update()
+    // public void QuestGiver()
+    // {
+    //     if (quest.Length > 0 && questManager != null)
+    //     {
+    //         Quest currentquest
+    //     }
+    // }
+    public void UpdateQuestMarker()
     {
-
-        if (!questManager.IsQuestActive(quest[0].questName) &&
-            !questManager.completedQuests.Exists(q => q.questName == quest[0].questName))
+        if (quest.Length > 0)
         {
-            questMarkerSprite.enabled = true;
+            if (!questManager.IsQuestActive(quest[0].questName) &&
+            !questManager.completedQuests.Exists(q => q.questName == quest[0].questName))
+            {
+                questMarkerSprite.enabled = true;
+            }
+            else
+            {
+                questMarkerSprite.enabled = false;
+            }
         }
         else
         {
             questMarkerSprite.enabled = false;
         }
-
+    }
+    void Update()
+    {
+        UpdateQuestMarker();
         PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
         if (Input.GetKeyDown(KeyCode.B) && playerIsClose)
         {
@@ -43,7 +57,7 @@ public class NPCScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && playerIsClose && !DialogueManager.instance.dialoguePanel.activeSelf)
         {
-            DialogueManager.instance.StartDialogue(quest[0], sentences);
+            DialogueManager.instance.StartDialogue(sentences);
         }
 
 
@@ -53,7 +67,17 @@ public class NPCScript : MonoBehaviour
         }
     }
     
-
+    public void QuestGiver()
+    {
+        if (quest != null)
+        {
+            questManager.AddQuest(quest[0]);
+        }
+        else
+        {
+            return;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Checks if player is in range and sets bool to true if in range
