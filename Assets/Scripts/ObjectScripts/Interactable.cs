@@ -10,10 +10,14 @@ using UnityEngine.SceneManagement;
 
 public class Interactable : MonoBehaviour
 {
+    public SpriteRenderer Lock;
+    public Sprite[] LockIcons;
+    public int RequiredScenePoints;
     private bool isInRange;
     private KeyCode interactKey = KeyCode.E;
     public UnityEvent interactAction;
     public int sceneBuildIndex;
+    
 
     public void sceneSwitch()
     {
@@ -23,17 +27,29 @@ public class Interactable : MonoBehaviour
     public void numberAdded()
     {
         PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
-        if ( playerMovement.scoreTester >= 15)
+        if ( playerMovement.scoreTester >= RequiredScenePoints)
         {
             sceneSwitch();
         }
         else
         {
             playerMovement.scoreTester += 3;
+            Debug.Log("Not Enough Points, Here have 3 points!");
         }
     }
     void Update()
     {
+        PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
+        if (playerMovement.scoreTester <= RequiredScenePoints)
+        {
+            Lock.sprite = LockIcons[0];
+        }
+        else
+        {
+            Lock.sprite = LockIcons[1];
+        }
+
+
         if(isInRange)
         {
             if(Input.GetKeyDown(interactKey))
