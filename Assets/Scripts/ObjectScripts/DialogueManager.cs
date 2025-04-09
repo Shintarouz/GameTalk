@@ -213,6 +213,10 @@ public class DialogueManager : MonoBehaviour
             {
                 index = index - 1;
             }
+            else if (index == 0)
+            {
+                EndDialogue();
+            }
             DisplayResponse(wrongAnswerResponse);
             contButton1.SetActive(false);
             contButton2.SetActive(false);
