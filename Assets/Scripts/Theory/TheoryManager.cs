@@ -12,6 +12,7 @@ public class TheoryManager : MonoBehaviour
     public TextMeshProUGUI TheoryText;
     public Button ExitButton;
     public Button BackButton;
+    
 
 
     void Start()
@@ -32,30 +33,37 @@ public class TheoryManager : MonoBehaviour
         {
             case 0:
                 BtnVisDisabler();
+                BackButton.gameObject.SetActive(true);
                 TheoryText.text = TheoryStrings[0];
                 break;
             case 1:
                 BtnVisDisabler();
+                BackButton.gameObject.SetActive(true);
                 TheoryText.text = TheoryStrings[1];
                 break;
             case 2:
                 BtnVisDisabler();
+                BackButton.gameObject.SetActive(true);
                 TheoryText.text = TheoryStrings[2];
                 break;
             case 3:
                 BtnVisDisabler();
+                BackButton.gameObject.SetActive(true);
                 TheoryText.text = TheoryStrings[3];
                 break;
             case 4:
                 BtnVisDisabler();
+                BackButton.gameObject.SetActive(true);
                 TheoryText.text = TheoryStrings[4];
                 break;
             case 5:
                 BtnVisDisabler();
+                BackButton.gameObject.SetActive(true);
                 TheoryText.text = TheoryStrings[5];
                 break;
             default:
                 BtnVisDisabler();
+                BackButton.gameObject.SetActive(true);
                 TheoryText.text = "error, no TheoryStrings";
                 Debug.Log("error");
                 break;
@@ -63,6 +71,7 @@ public class TheoryManager : MonoBehaviour
     }
     public void BackButtonFunction()
     {
+        BackButton.gameObject.SetActive(false);
         TheoryText.text = "";
         foreach (Button btn in buttons)
         {
@@ -73,6 +82,7 @@ public class TheoryManager : MonoBehaviour
     public void BtnsVisEnabler()
     {
         DialogueManager.instance.DisplayTheory();
+        DialogueManager.instance.isDialogueActive = false;
     }
 
     public void BtnVisDisabler()
