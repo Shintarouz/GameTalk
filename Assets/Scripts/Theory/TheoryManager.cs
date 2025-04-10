@@ -6,22 +6,24 @@ using TMPro;
 
 public class TheoryManager : MonoBehaviour
 {
+    [Multiline]
+    public string[] TheoryStrings;
     public Button[] buttons;
-    public Image Background;
     public TextMeshProUGUI TheoryText;
     public Button ExitButton;
-    public Button RertryButton;
+    public Button BackButton;
 
 
     void Start()
     {
+        BackButtonFunction();
         for (int i = 0; i < buttons.Length; i++)
         {
             int index = i;
             buttons[i].onClick.AddListener(() => OnButtonClicked(index));
         }
-        ExitButton.onClick.AddListener(() => BtnVisDisabler());
-        RertryButton.onClick.AddListener(() => BtnsVisEnabler());
+        ExitButton.onClick.AddListener(() => BtnsVisEnabler());
+        BackButton.onClick.AddListener(() => BackButtonFunction());
     }
 
     void OnButtonClicked(int index)
@@ -29,35 +31,48 @@ public class TheoryManager : MonoBehaviour
         switch (index)
         {
             case 0:
-                TheoryText.text = "Case 1 : The fitness grammpacer test is a....";
+                BtnVisDisabler();
+                TheoryText.text = TheoryStrings[0];
                 break;
             case 1:
-                TheoryText.text = "Case 2 : The fitness grammpacer test is a....";
+                BtnVisDisabler();
+                TheoryText.text = TheoryStrings[1];
                 break;
             case 2:
-                TheoryText.text = "Case 3 : The fitness grammpacer test is a....";
+                BtnVisDisabler();
+                TheoryText.text = TheoryStrings[2];
                 break;
             case 3:
-                TheoryText.text = "Case 4 : The fitness grammpacer test is a....";
+                BtnVisDisabler();
+                TheoryText.text = TheoryStrings[3];
                 break;
             case 4:
-                TheoryText.text = "Case 5 : The fitness grammpacer test is a....";
+                BtnVisDisabler();
+                TheoryText.text = TheoryStrings[4];
                 break;
             case 5:
-                TheoryText.text = "Case 6 : The fitness grammpacer test is a....";
+                BtnVisDisabler();
+                TheoryText.text = TheoryStrings[5];
                 break;
             default:
+                BtnVisDisabler();
+                TheoryText.text = "error, no TheoryStrings";
                 Debug.Log("error");
                 break;
+        }
+    }
+    public void BackButtonFunction()
+    {
+        TheoryText.text = "";
+        foreach (Button btn in buttons)
+        {
+            btn.gameObject.SetActive(true);
         }
     }
 
     public void BtnsVisEnabler()
     {
-        foreach (Button btn in buttons)
-        {
-            btn.gameObject.SetActive(true);
-        }
+        DialogueManager.instance.DisplayTheory();
     }
 
     public void BtnVisDisabler()
@@ -66,10 +81,5 @@ public class TheoryManager : MonoBehaviour
         {
             btn.gameObject.SetActive(false);
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

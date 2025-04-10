@@ -8,9 +8,9 @@ using Unity.VisualScripting;
 
 public class DialogueManager : MonoBehaviour
 {
-    // public NPCScript NPCscript;
     public static DialogueManager instance;
     public GameObject dialoguePanel;
+    public GameObject theoryCanvas;
     public TextMeshProUGUI dialogueText;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI missionText;
@@ -18,7 +18,6 @@ public class DialogueManager : MonoBehaviour
     public Image npcIcon;
     public Sprite[] npcIcons;
     public QuestManager questManager;
-    // private Quest currentQuest;
 
 
     private Sentences[] DialogueSentences;
@@ -33,6 +32,18 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI contButton2Text;
     private TextMeshProUGUI contButton3Text;
 
+
+    public void DisplayTheory()
+    {
+        if (theoryCanvas.activeSelf == true)
+        {
+            theoryCanvas.SetActive(false);
+        }
+        else
+        {
+            theoryCanvas.SetActive(true);
+        }
+    }
     void Awake()
     {
         if ( instance == null )
@@ -280,7 +291,10 @@ public class DialogueManager : MonoBehaviour
     }
     void Update()
     {
-        // Debug.Log(index);
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            DisplayTheory();
+        }
     }
     public void UpdateNextButtonText()
     {
