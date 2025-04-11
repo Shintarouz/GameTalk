@@ -5,6 +5,7 @@ using TMPro;
 
 public class QuestManager : MonoBehaviour
 {
+    public static QuestManager instance;
     public GameObject QuestMenu;
     public GameObject PointsMenu;
     public GameObject OptionsMenu;
@@ -12,6 +13,13 @@ public class QuestManager : MonoBehaviour
     public List<Quest> activeQuests = new();
     public List<Quest> completedQuests = new();
 
+    private void Awake()
+    {
+        if ( instance == null)
+        {
+            instance = this;
+        }
+    } 
 
     void Update()
     {
@@ -29,6 +37,19 @@ public class QuestManager : MonoBehaviour
         {
             if(OptionsMenu)
             OptionsMenu.SetActive(!OptionsMenu.activeSelf);
+        }
+    }
+
+    public void PointsChecker()
+    {
+        PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
+        if (PointsText.text == playerMovement.scoreTester.ToString())
+        {
+            return;
+        }
+        else
+        {
+            DisplayPoints();
         }
     }
     public void DisplayPoints()
