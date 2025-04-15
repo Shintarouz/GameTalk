@@ -6,7 +6,7 @@ using TMPro;
 
 public class TheoryManager : MonoBehaviour
 {
-    [Multiline]
+    [TextArea]
     public string[] TheoryStrings;
     public Button[] buttons;
     public TextMeshProUGUI TheoryText;
