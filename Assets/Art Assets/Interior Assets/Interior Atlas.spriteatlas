@@ -40,7 +40,6 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 8a3f8ebde9f810040b95edda52abbb22, type: 3}
     - {fileID: 2800000, guid: 645c8f5acaa4a8c479d3617b64cf8c88, type: 3}
     - {fileID: 2800000, guid: e5df916550b978a43a2ea8f5473a362a, type: 3}
-    - {fileID: 2800000, guid: 84b01a044b2ca004db8b795bc2de0f78, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -13724,6 +13723,7 @@ SpriteAtlas:
   - {fileID: -1317931273, guid: 645c8f5acaa4a8c479d3617b64cf8c88, type: 3}
   - {fileID: -1978971283, guid: 645c8f5acaa4a8c479d3617b64cf8c88, type: 3}
   - {fileID: 202712223, guid: 645c8f5acaa4a8c479d3617b64cf8c88, type: 3}
+  - {fileID: -508522729, guid: 645c8f5acaa4a8c479d3617b64cf8c88, type: 3}
   - {fileID: -432412034, guid: 645c8f5acaa4a8c479d3617b64cf8c88, type: 3}
   - {fileID: -64080082, guid: 645c8f5acaa4a8c479d3617b64cf8c88, type: 3}
   - {fileID: -1787893073, guid: 645c8f5acaa4a8c479d3617b64cf8c88, type: 3}
@@ -32517,6 +32517,7 @@ SpriteAtlas:
   - Room_Builder_16x16_2523
   - Room_Builder_16x16_3836
   - Room_Builder_16x16_3820
+  - Room_Builder_16x16_3856
   - Room_Builder_16x16_3844
   - Room_Builder_16x16_500
   - Room_Builder_16x16_3152
