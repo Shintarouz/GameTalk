@@ -33,6 +33,15 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI contButton3Text;
 
 
+        public void TheorySwitcher()
+    {
+        if (!isDialogueActive)
+        {
+            isDialogueActive = true;
+            DisplayTheory();
+        }
+    }
+
     public void DisplayTheory()
     {
         if (theoryCanvas.activeSelf == true)
@@ -149,6 +158,7 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         contButton1.SetActive(false);
         contButton2.SetActive(false);
+        theoryCanvas.SetActive(false);
         // NPCscript.QuestGiver();
     
 
@@ -287,14 +297,6 @@ public class DialogueManager : MonoBehaviour
                 nameText.text = "Error";
                 npcIcon.sprite = npcIcons[3];
                 break;
-        }
-    }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.J) && !isDialogueActive)
-        {
-            isDialogueActive = true;
-            DisplayTheory();
         }
     }
     public void UpdateNextButtonText()
