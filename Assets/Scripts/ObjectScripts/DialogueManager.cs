@@ -1,75 +1,73 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
 
 
 public class DialogueManager : MonoBehaviour
 {
-    public static DialogueManager instance;
+    public static DialogueManager Instance;
+
+
+    [Header("Dialogue References")]
     public GameObject dialoguePanel;
-    public GameObject theoryCanvas;
     public TextMeshProUGUI dialogueText;
     public TextMeshProUGUI nameText;
-    public TextMeshProUGUI missionText;
+    private Sentences[] dialogueSentences;
     public bool isDialogueActive = false;
-    public Image npcIcon;
+    private int index;
+    public Image npcImage;
     public Sprite[] npcIcons;
+
+
+    [Header("Quest References")]
+    public TextMeshProUGUI missionText;
     public QuestManager questManager;
 
 
-    private Sentences[] DialogueSentences;
-    private int index;
+    [Header("Theory References")]
+    public GameObject theoryCanvas;
 
+
+    [Header("Buttons")]
     public GameObject contButton1;
     public GameObject contButton2;
     public GameObject contButton3;
     public GameObject contButton4;
-    public GameObject NextButton;
+    public GameObject nextPageButton;
     private TextMeshProUGUI contButton1Text;
     private TextMeshProUGUI contButton2Text;
-    private TextMeshProUGUI contButton3Text;
 
 
-        public void TheorySwitcher()
+    public void DisplayTheory()
     {
         if (!isDialogueActive)
         {
             isDialogueActive = true;
-            DisplayTheory();
-        }
-    }
-
-    public void DisplayTheory()
-    {
-        if (theoryCanvas.activeSelf == true)
-        {
-            theoryCanvas.SetActive(false);
+            theoryCanvas.SetActive(!theoryCanvas.activeSelf);
         }
         else
         {
-            theoryCanvas.SetActive(true);
+            isDialogueActive = false;
+            theoryCanvas.SetActive(!theoryCanvas.activeSelf);
         }
     }
+
     void Awake()
     {
-        if ( instance == null )
+        if ( Instance == null )
         {
-            instance = this;
+            Instance = this;
         }
         dialoguePanel.SetActive(false);
         questManager = FindObjectOfType<QuestManager>();
         contButton1Text = contButton1.GetComponentInChildren<TextMeshProUGUI>();
         contButton2Text = contButton2.GetComponentInChildren<TextMeshProUGUI>();
-        contButton3Text = contButton3.GetComponentInChildren<TextMeshProUGUI>();
 
         contButton1.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => OnAnswerClicked(contButton1Text.text));
         contButton2.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => OnAnswerClicked(contButton2Text.text));
         contButton3.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => DisplayNextSentence());
         contButton4.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => ContinueButton());
-        NextButton.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => NextPage());
+        nextPageButton.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => NextPage());
     }
 
     public void ContinueButton()
@@ -84,12 +82,11 @@ public class DialogueManager : MonoBehaviour
         index = 0;
         if (isDialogueActive) return;
 
-        DialogueSentences = arraySentences;
-        // currentQuest = quest;
+        dialogueSentences = arraySentences;
         isDialogueActive = true;
         dialoguePanel.SetActive(true);
         contButton3.SetActive(false);
-        int npcID = DialogueSentences[index].npcID;
+        int npcID = dialogueSentences[index].npcID;
         npcIDChecker(npcID);
         DisplayNextSentence();
         UpdateNextButtonText();
@@ -99,18 +96,18 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueText.pageToDisplay = 1;
         PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
-        if(index >= DialogueSentences.Length)
+        if(index >= dialogueSentences.Length)
         {
             playerMovement.scoreTester += 5;
             questManager.DisplayPoints();
             EndDialogue();
             return;
         }
-        int npcID = DialogueSentences[index].npcID;
+        int npcID = dialogueSentences[index].npcID;
         npcIDChecker(npcID);
-        string sentence = DialogueSentences[index].sentence;
-        string rightanswer = DialogueSentences[index].rightAnswer;
-        string wronganswer = DialogueSentences[index].wrongAnswer;
+        string sentence = dialogueSentences[index].sentence;
+        string rightanswer = dialogueSentences[index].rightAnswer;
+        string wronganswer = dialogueSentences[index].wrongAnswer;
 
         int randomChoice = Random.Range(0, 2);
         if (randomChoice == 0)
@@ -123,12 +120,9 @@ public class DialogueManager : MonoBehaviour
             contButton1Text.text = wronganswer;
             contButton2Text.text = rightanswer;
         }
-        // StopAllCoroutines();
-        // dialogueText.text = "";
 
         dialogueText.text = sentence;
         dialogueText.ForceMeshUpdate();
-        // StartCoroutine(Typing(sentence));
 
         contButton1.SetActive(true);
         contButton2.SetActive(true);
@@ -137,44 +131,18 @@ public class DialogueManager : MonoBehaviour
     }
 
 
-
-    // IEnumerator Typing(string sentence)
-    // {
-    //     isTyping = true;
-    //     dialogueText.text = "";
-
-    //     foreach(char letter in sentence.ToCharArray())
-    //     {
-    //         dialogueText.text += letter;
-    //         yield return new WaitForSeconds(0.001f);
-    //     }
-    //     isTyping = false;
-    // }
-
     public void EndDialogue()
     {
-        // NPCScript NPCScript = FindObjectOfType<NPCScript>();
         isDialogueActive = false;
         dialoguePanel.SetActive(false);
         contButton1.SetActive(false);
         contButton2.SetActive(false);
         theoryCanvas.SetActive(false);
-        // NPCscript.QuestGiver();
-    
-
-        // if (currentQuest == null) 
-        // {
-        //     return;
-        // }
-        // else
-        // {
-        //     questManager.AddQuest(currentQuest);
-        // }
     }
 
     public void DisplayQuests()
     {
-        if (questManager.activeQuests.Count == 0)
+        if (questManager.ActiveQuests.Count == 0) // if no active quests display "No Active Quests"
         {
             missionText.text = "No Active Quests";
             return;
@@ -182,29 +150,19 @@ public class DialogueManager : MonoBehaviour
         
         missionText.text = "";
 
-        for(int i = 0; i < questManager.activeQuests.Count; i++)
+        for(int i = 0; i < questManager.ActiveQuests.Count; i++)
         {
             if (i > 0)
             {
                 missionText.text += "\n";
             }
-            Quest q = questManager.activeQuests[i];
+            Quest q = questManager.ActiveQuests[i];
             missionText.text += $"Quest: {q.questName}\nDoel: {q.description}\n"; // \nStatus: {(q.isCompleted ? "Completed" : "Active")}
         }
     }
 
     public void DisplayResponse(string response)
     {
-        // StopAllCoroutines();
-        // dialogueText.text = "";
-        // if (response != "")
-        // {
-        //     StartCoroutine(Typing(response));
-        // }
-        // else
-        // {
-        //     StartCoroutine(Typing("{Missing a response, please add a response}"));
-        // }
         dialogueText.text = string.IsNullOrEmpty(response)
             ? "{missing response}"
             : response;
@@ -215,9 +173,9 @@ public class DialogueManager : MonoBehaviour
     
     public void OnAnswerClicked(string buttonText)
     {
-        string rightAnswerResponse = DialogueSentences[index].rightAnswerResponse;
-        string wrongAnswerResponse = DialogueSentences[index].wrongAnswerResponse;
-        string CA = DialogueSentences[index].rightAnswer;
+        string rightAnswerResponse = dialogueSentences[index].rightAnswerResponse;
+        string wrongAnswerResponse = dialogueSentences[index].wrongAnswerResponse;
+        string CA = dialogueSentences[index].rightAnswer;
 
         if(buttonText == CA)
         {
@@ -249,15 +207,6 @@ public class DialogueManager : MonoBehaviour
 
     public void NextPage()
     {
-        // if (isTyping)
-        // {
-        //     StopAllCoroutines();
-        //     dialogueText.text = DialogueSentences[index].sentence;
-        //     isTyping = false;
-        //     dialogueText.ForceMeshUpdate();
-        // }
-        // else
-        // {
         if (dialogueText.pageToDisplay == 0)
         {
             dialogueText.pageToDisplay = 1;
@@ -279,29 +228,29 @@ public class DialogueManager : MonoBehaviour
         {
             case 1:
                 nameText.text = "Verteller";
-                npcIcon.sprite = npcIcons[0];
+                npcImage.sprite = npcIcons[0];
                 break;
             case 2:
                 nameText.text = "Police";
-                npcIcon.sprite = npcIcons[1];
+                npcImage.sprite = npcIcons[1];
                 break;
             case 3:
                 nameText.text = "Head";
-                npcIcon.sprite = npcIcons[2];
+                npcImage.sprite = npcIcons[2];
                 break;
             case 4:
                 nameText.text = "BeachBoy";
-                npcIcon.sprite = npcIcons[3];
+                npcImage.sprite = npcIcons[3];
                 break;
             default:
                 nameText.text = "Error";
-                npcIcon.sprite = npcIcons[3];
+                npcImage.sprite = npcIcons[3];
                 break;
         }
     }
     public void UpdateNextButtonText()
     {
-        NextButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Page {dialogueText.pageToDisplay}/{dialogueText.textInfo.pageCount}";
+        nextPageButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Page {dialogueText.pageToDisplay}/{dialogueText.textInfo.pageCount}";
         dialogueText.ForceMeshUpdate();
         Debug.Log("updates next button");
     }

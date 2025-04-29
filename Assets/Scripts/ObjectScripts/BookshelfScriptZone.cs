@@ -10,19 +10,14 @@ public class BookshelfScriptZone : MonoBehaviour
     private KeyCode interactKey = KeyCode.J;
     public UnityEvent interactAction;
 
-    public void OpenTheoryMenuCaller()
-    {
-        DialogueManager.instance.TheorySwitcher();
-    }
 
-    // Update is called once per frame
     void Update()
     {
         if(isInRange)
         {
-            if(Input.GetKeyDown(interactKey))
+            if(Input.GetKeyDown(interactKey)) // if interactKey pressed run TheorySwitcher()
             {
-                interactAction.Invoke();
+                DialogueManager.Instance.DisplayTheory();
             }
         }
     }
@@ -34,7 +29,7 @@ public class BookshelfScriptZone : MonoBehaviour
             isInRange = true;
         }
     }
-    void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         isInRange = false;
     }

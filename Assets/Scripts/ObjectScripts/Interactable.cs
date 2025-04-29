@@ -34,7 +34,7 @@ public class Interactable : MonoBehaviour
         else
         {
             playerMovement.scoreTester += 3;
-            QuestManager.instance.DisplayPoints();
+            QuestManager.Instance.DisplayPoints();
             Debug.Log("Not Enough Points, Here have 3 points!");
         }
     }

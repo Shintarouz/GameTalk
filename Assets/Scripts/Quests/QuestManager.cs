@@ -1,77 +1,84 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class QuestManager : MonoBehaviour
 {
-    public static QuestManager instance;
-    public GameObject QuestMenu;
-    public GameObject PointsMenu;
-    public GameObject OptionsMenu;
-    public TextMeshProUGUI PointsText;
-    public List<Quest> activeQuests = new();
-    public List<Quest> completedQuests = new();
-    
-    void Start()
-    {
-        DisplayPoints();
-    }
 
-    private void Awake()
+    public static QuestManager Instance; 
+
+    public GameObject questMenu;
+    public GameObject pointsMenu;
+    public GameObject optionsMenu;
+    public TextMeshProUGUI pointsText;
+    public List<Quest> ActiveQuests = new();
+    public List<Quest> CompletedQuests = new();
+
+
+    private void Awake() // Looks if QuestManager object already exists in the scene
     {
-        if ( instance == null)
+        if ( Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
     } 
 
-    void Update()
+
+    private void Start()
+    {
+        DisplayPoints(); // Updates points text at the start 
+        DialogueManager.Instance.DisplayQuests();
+    }
+
+
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
             DisplayPoints();
-            if(PointsMenu)
-            PointsMenu.SetActive(!PointsMenu.activeSelf);
+            DialogueManager.Instance.DisplayQuests();
 
-            if(QuestMenu)
-            // PointsMenu.setActive(!PointsMenu.activeSelf);
-            QuestMenu.SetActive(!QuestMenu.activeSelf);
+            if(pointsMenu)
+                {pointsMenu.SetActive(!pointsMenu.activeSelf);}
+
+            if(questMenu)
+                {questMenu.SetActive(!questMenu.activeSelf);}
         }
+
         if (Input.GetKeyDown(KeyCode.X))
         {
-            if(OptionsMenu)
-            OptionsMenu.SetActive(!OptionsMenu.activeSelf);
+            if(optionsMenu)
+                {optionsMenu.SetActive(!optionsMenu.activeSelf);}
         }
     }
+
 
     public void PointsChecker()
     {
         PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
-        if (PointsText.text == playerMovement.scoreTester.ToString())
-        {
-            return;
-        }
-        else
+
+        if (pointsText.text != playerMovement.scoreTester.ToString())
         {
             DisplayPoints();
         }
     }
+
+
     public void DisplayPoints()
     {
         PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
-        PointsText.text = playerMovement.scoreTester.ToString();
+        pointsText.text = playerMovement.scoreTester.ToString();
     }
+
+
     public void CompleteQuest(string questName)
     {
-        Quest quest = activeQuests.Find(q => q.questName == questName);
+        Quest quest = ActiveQuests.Find(q => q.questName == questName);
         if (quest != null)
         {
-            Debug.Log("+5 coins"); // mag weg
-            quest.isCompleted = true;
-            completedQuests.Add(quest);
-            activeQuests.Remove(quest);
-            DialogueManager.instance.DisplayQuests();
+            CompletedQuests.Add(quest);
+            ActiveQuests.Remove(quest);
+            DialogueManager.Instance.DisplayQuests();
         }
     }
 
@@ -79,102 +86,16 @@ public class QuestManager : MonoBehaviour
 
     public bool IsQuestActive(string questName)
     {
-        return activeQuests.Exists(quest => quest.questName == questName);
+        return ActiveQuests.Exists(q => q.questName == questName);
     }
 
 
     
     public void AddQuest(Quest newQuest)
     {
-        if (activeQuests.Contains(newQuest) || completedQuests.Contains(newQuest)) return;
-        activeQuests.Add(newQuest);
-        DialogueManager.instance.DisplayQuests();
-        Debug.Log($"New Quest: {newQuest.questName}"); // mag weg
+        if (ActiveQuests.Contains(newQuest) || CompletedQuests.Contains(newQuest)) return;
+
+        ActiveQuests.Add(newQuest);
+        DialogueManager.Instance.DisplayQuests();
     }
-
-
-    // To start a quest use -> StartQuest("The Name of the quest","The Description of the quest"); 
-    // // Starts a quest depending on the name and description, if quest exists it returns.
-    // public void StartQuest(string questName, string questDescription)
-    // {
-    //     if (IsQuestActive(questName))
-    //     {
-    //         return;
-    //     }
-    //     Quest newQuest = new(questName, questDescription);
-    //     AddQuest(newQuest);
-    // }
-
-
-
-    // public void RemoveQuest(string questName)
-    // {
-    //     Quest questToRemove = activeQuests.Find(q => q.questName == questName);
-    //     if (questToRemove != null)
-    //     {
-    //         activeQuests.Remove(questToRemove);
-    //         Debug.Log($"Quest Removed: {questToRemove.questName}"); // mag weg
-    //         DialogueManager.instance.DisplayQuest();
-    //     }
-    //     else
-    //     {
-    //         Debug.Log($"Quest not found: {questName}"); // mag weg
-    //     }
-    // }
-
-
-    // public void NPCQuestCompleter(int npcID)
-    // {
-    //     // Checks the npcID and completes the right quest
-    //     switch (npcID)
-    //     {
-    //         case 1:
-    //             CompleteQuest("quest1");
-    //             break;
-            
-    //         case 2:
-    //             CompleteQuest("quest2");
-    //             break;
-    //     }
-    // }
-
-
-
-    // public void NPCQuestPicker(int npcID)
-    // {
-    //     switch (npcID)
-    //     {
-    //         // Takes in npcID, and will Start and Display the Quest
-    //         case 1:
-    //         if (!IsQuestActive("quest1"))
-    //         {
-    //             StartQuest("quest1", "Talk to John at the Library");
-    //             DialogueManager.instance.DisplayQuest();
-    //         }
-    //         else
-    //         {
-    //             RemoveQuest("quest1");
-    //         }
-    //         break;
-
-
-    //         case 2: 
-    //         if (!IsQuestActive("quest2"))
-    //         {
-    //             StartQuest("quest2","Talk to Stewart at the Park");
-    //             DialogueManager.instance.DisplayQuest();
-    //         }
-    //         else
-    //         {
-    //             RemoveQuest("quest2");
-    //         }
-    //         break;
-
-
-    //         default:
-    //         Debug.Log("broke"); // mag weg
-    //         break;
-            
-    //     }
-    // }
 }

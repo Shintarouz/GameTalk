@@ -7,11 +7,11 @@ using TMPro;
 public class TheoryManager : MonoBehaviour
 {
     [TextArea]
-    public string[] TheoryStrings;
+    public string[] theoryStrings;
     public Button[] buttons;
-    public TextMeshProUGUI TheoryText;
-    public Button ExitButton;
-    public Button BackButton;
+    public TextMeshProUGUI theoryText;
+    public Button exitButton;
+    public Button backButton;
     
 
 
@@ -23,8 +23,8 @@ public class TheoryManager : MonoBehaviour
             int index = i;
             buttons[i].onClick.AddListener(() => OnButtonClicked(index));
         }
-        ExitButton.onClick.AddListener(() => BtnsVisEnabler());
-        BackButton.onClick.AddListener(() => BackButtonFunction());
+        exitButton.onClick.AddListener(() => BtnsVisEnabler());
+        backButton.onClick.AddListener(() => BackButtonFunction());
     }
 
     void OnButtonClicked(int index)
@@ -33,46 +33,52 @@ public class TheoryManager : MonoBehaviour
         {
             case 0:
                 BtnVisDisabler();
-                BackButton.gameObject.SetActive(true);
-                TheoryText.text = TheoryStrings[0];
+                backButton.gameObject.SetActive(true);
+                theoryText.text = theoryStrings[0];
+                theoryText.gameObject.SetActive(true);
                 break;
             case 1:
                 BtnVisDisabler();
-                BackButton.gameObject.SetActive(true);
-                TheoryText.text = TheoryStrings[1];
+                backButton.gameObject.SetActive(true);
+                theoryText.text = theoryStrings[1];
+                theoryText.gameObject.SetActive(true);
                 break;
             case 2:
                 BtnVisDisabler();
-                BackButton.gameObject.SetActive(true);
-                TheoryText.text = TheoryStrings[2];
+                backButton.gameObject.SetActive(true);
+                theoryText.text = theoryStrings[2];
+                theoryText.gameObject.SetActive(true);
                 break;
             case 3:
                 BtnVisDisabler();
-                BackButton.gameObject.SetActive(true);
-                TheoryText.text = TheoryStrings[3];
+                backButton.gameObject.SetActive(true);
+                theoryText.text = theoryStrings[3];
+                theoryText.gameObject.SetActive(true);
                 break;
             case 4:
                 BtnVisDisabler();
-                BackButton.gameObject.SetActive(true);
-                TheoryText.text = TheoryStrings[4];
+                backButton.gameObject.SetActive(true);
+                theoryText.text = theoryStrings[4];
+                theoryText.gameObject.SetActive(true);
                 break;
             case 5:
                 BtnVisDisabler();
-                BackButton.gameObject.SetActive(true);
-                TheoryText.text = TheoryStrings[5];
+                backButton.gameObject.SetActive(true);
+                theoryText.text = theoryStrings[5];
+                theoryText.gameObject.SetActive(true);
                 break;
             default:
                 BtnVisDisabler();
-                BackButton.gameObject.SetActive(true);
-                TheoryText.text = "error, no TheoryStrings";
+                backButton.gameObject.SetActive(true);
+                theoryText.text = "error, no TheoryStrings";
                 Debug.Log("error");
                 break;
         }
     }
     public void BackButtonFunction()
     {
-        BackButton.gameObject.SetActive(false);
-        TheoryText.text = "";
+        backButton.gameObject.SetActive(false);
+        theoryText.gameObject.SetActive(false);
         foreach (Button btn in buttons)
         {
             btn.gameObject.SetActive(true);
@@ -81,8 +87,7 @@ public class TheoryManager : MonoBehaviour
 
     public void BtnsVisEnabler()
     {
-        DialogueManager.instance.DisplayTheory();
-        DialogueManager.instance.isDialogueActive = false;
+        DialogueManager.Instance.DisplayTheory();
     }
 
     public void BtnVisDisabler()

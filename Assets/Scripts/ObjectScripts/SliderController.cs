@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -9,8 +7,8 @@ public class SliderController : MonoBehaviour
     public TextMeshProUGUI valueText;
     public Slider volumeSlider;
     public AudioSource audioSource;
-    public Image VolumeIcon;
-    public Sprite[] VolumeIcons;
+    public Image volumeIcon;
+    public Sprite[] volumeIcons;
 
     void Start()
     {
@@ -19,16 +17,17 @@ public class SliderController : MonoBehaviour
         OnSliderChanged(volumeSlider.value);
     }
 
-    public void OnSliderChanged(float value) {
+    public void OnSliderChanged(float value)
+    {
         valueText.text = "volume : " + (value * 100).ToString("F0") + "%";
         audioSource.volume = value;
-        if (value == 0)
+        if (value == 0) // Change Icon if volume is 0
         {
-            VolumeIcon.sprite = VolumeIcons[1];
+            volumeIcon.sprite = volumeIcons[1];
         }
         else
         {
-            VolumeIcon.sprite = VolumeIcons[0];
+            volumeIcon.sprite = volumeIcons[0];
         }
     }
 }

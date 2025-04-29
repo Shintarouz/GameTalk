@@ -341,23 +341,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 872664455}
-  theoryCanvas: {fileID: 1365771175}
   dialogueText: {fileID: 1863989023}
   nameText: {fileID: 436446932}
-  missionText: {fileID: 89678886}
   isDialogueActive: 0
-  npcIcon: {fileID: 775808136}
+  npcImage: {fileID: 775808136}
   npcIcons:
   - {fileID: 21300000, guid: 419cd719e3c589d4ebaaca47d120b15a, type: 3}
   - {fileID: 21300000, guid: f274b6f9fe1f5c44e8d19c528936b164, type: 3}
   - {fileID: 21300000, guid: 94e11c8232f397949b87ea9caad90a81, type: 3}
   - {fileID: 21300000, guid: 9e4cb037fab0ad04a8085b613a113c17, type: 3}
+  missionText: {fileID: 89678886}
   questManager: {fileID: 565451324}
+  theoryCanvas: {fileID: 1365771175}
   contButton1: {fileID: 2096455973}
   contButton2: {fileID: 2081285692}
   contButton3: {fileID: 462969927}
   contButton4: {fileID: 2110544294}
-  NextButton: {fileID: 692296469}
+  nextPageButton: {fileID: 692296469}
 --- !u!4 &52269074
 Transform:
   m_ObjectHideFlags: 0
@@ -385,137 +385,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531c0bc6ee1e9fc4a819724c7f7f4ad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TheoryStrings:
-  - "Theorie 1 : Gespreksvormen en -structuur   \r\n\r\nGesprekken kunnen op veel
-    verschillende manieren verlopen, afhankelijk van de situatie en het doel. Een
-    informeel gesprek vindt vaak plaats met vrienden of huisgenoten. Deze gesprekken
-    zijn meestal onvoorbereid en verlopen op een ontspannen manier. Je wisselt informatie
-    uit en praat met elkaar vooral voor de gezelligheid.\n\n\r\rDaarentegen is een
-    formeel gesprek, zoals een sollicitatiegesprek of een werkoverleg, vaak goed
-    voorbereid en heeft het een duidelijk doel. In zulke gesprekken zijn gesprekstechnieken
-    belangrijk om het gesprek soepel en effectief te laten verlopen. Denk hierbij
-    aan goed luisteren, doorvragen en je eigen mening op een duidelijke manier uitspreken.
-    Ook is het belangrijk om respectvol te communiceren en oogcontact te houden,
-    zodat het gesprek prettig blijft voor beide partijen. \r\n\r\nNaast het verschil
-    tussen informeel en formeel, zijn er ook verschillende soorten gesprekken op
-    basis van structuur. In een gesloten gesprek ligt de structuur vast, bijvoorbeeld
-    bij het invullen van een vragenformulier. In een halfopen gesprek is de opbouw
-    van tevoren bepaald, zoals bij een gesprek waarin je samen tot een oplossing
-    probeert te komen \u2013 denk bijvoorbeeld aan een BPV-gesprek. Gesprekspartners
-    hebben hierbij ruimte om hun eigen inbreng te leveren binnen het vastgestelde
-    kader. Bij een open gesprek hebben beide gesprekspartners invloed op hoe het
-    gesprek verloopt. Er is geen strakke structuur of vaste planning; het onderwerp
-    kan door een van beide worden ingebracht, en het verloop ontstaat spontaan. \r\n\r\nTot
-    slot kunnen gesprekken ook op verschillende manieren worden geleid. In een directief
-    gesprek stuurt de gespreksleider duidelijk aan en gaat doelgericht te werk, vaak
-    passend bij een gesloten gesprek. In een non-directief gesprek daarentegen, laat
-    de gespreksleider het verhaal van de ander leidend zijn en gaat mee in de richting
-    die de ander op wil."
-  - "Theorie 2 : Gespreksdoelen \r\n\nVoordat je een gesprek aangaat, is het belangrijk
-    om goed na te denken over wat je met dat gesprek wilt bereiken. Gespreksdoelen
-    helpen je hierbij. Ze geven richting aan het gesprek en zorgen ervoor dat je
-    doelgericht communiceert. Door vooraf helder te hebben wat je wilt, vergroot
-    je de kans op een effectief en prettig gesprek. \r\n\r\nEr zijn drie soorten
-    gespreksdoelen: het kennisdoel, het houdingsdoel en het gedragsdoel. Elk van
-    deze doelen heeft een ander doel en vraagt een andere aanpak. \r\n\r\n\rHet kennisdoel
-    draait om het overbrengen van informatie. Je wilt dat de ander na het gesprek
-    beter ge\xEFnformeerd is dan daarvoor. Dit kan bijvoorbeeld gaan over het uitleggen
-    van een werkwijze, het delen van nieuws, of het geven van instructies. Denk aan
-    een docent die iets uitlegt aan een leerling, of een collega die vertelt hoe
-    een nieuwe machine werkt. Het is hierbij belangrijk dat je duidelijk en gestructureerd
-    communiceert, zodat de ander de informatie goed begrijpt. \r\n\r\n  \r\n\r\nHet
-    houdingsdoel richt zich op de mening, houding of het gevoel van de ander. Je
-    wilt dat de ander na het gesprek ergens anders over denkt of er op een andere
-    manier tegenover staat. Dit komt vaak voor in gesprekken waarin je iemand probeert
-    te overtuigen of te motiveren. Bijvoorbeeld: je praat met een buur over duurzamer
-    leven, en je hoopt dat hij aan het eind van het gesprek openstaat voor afval
-    scheiden. In zulke gesprekken spelen argumentatie, empathie en overtuigingskracht
-    een belangrijke rol. \r\n\r\n  \r\n\r\nHet derde type is het gedragsdoel. Hierbij
-    wil je dat de ander na het gesprek daadwerkelijk iets gaat doen. Je probeert
-    dus gedrag te be\xEFnvloeden of in gang te zetten. Een voorbeeld hiervan is wanneer
-    je een collega vraagt om een taak op zich te nemen, of wanneer je een klant aanmoedigt
-    om een aankoop te doen. Bij een gedragsdoel is het belangrijk om duidelijk te
-    zijn in wat je van de ander verwacht, waarom het belangrijk is, en wat de volgende
-    stappen zijn."
-  - "Theorie 3 : Gespreksfases\n\nEen goed gesprek verloopt vaak volgens een bepaalde
-    structuur, die helpt om het doel van het gesprek te bereiken en ervoor zorgt
-    dat beide gesprekspartners zich gehoord en begrepen voelen. Deze structuur bestaat
-    uit vier fasen: de aanloopfase, de planningsfase, de themafase en de slotfase.
-    Elke fase heeft zijn eigen functie en draagt bij aan een duidelijk, respectvol
-    en doelgericht gesprek.\n\nWe beginnen met de aanloopfase. Dit is de opening
-    van het gesprek, waarin je met een korte 'social talk' een prettige sfeer probeert
-    te cre\xEBren. Denk hierbij aan een vriendelijke begroeting, een informele opmerking
-    of een korte uitwisseling over hoe het gaat. Deze fase helpt om eventuele spanning
-    weg te nemen en het gesprek op een ontspannen manier te starten. De aanloopfase
-    hoeft niet lang te duren \u2013 meestal is een paar minuten voldoende.\n\nNa
-    de aanloop volgt de planningsfase. Hierin leg je uit waarom het gesprek plaatsvindt
-    en wat het doel ervan is. Je bespreekt ook eventuele randvoorwaarden, zoals hoeveel
-    tijd er is, of welke onderwerpen er wel of niet aan bod komen. Daarnaast geef
-    je aan hoe het gesprek zal verlopen: bijvoorbeeld of je eerst informatie geeft
-    en daarna vragen stelt, of dat je samen naar een oplossing zoekt. Door dit vooraf
-    helder te maken, weet de ander waar hij of zij aan toe is en ontstaat er structuur.
-    Ook deze fase duurt meestal maar enkele minuten, maar is van groot belang voor
-    een soepel verloop van het gesprek.\n\nDaarna kom je in de themafase. Dit is
-    de kern van het gesprek: het moment waarop het hoofdonderwerp aan bod komt. In
-    deze fase bespreek je de inhoud, deel je standpunten, stel je vragen en werk
-    je eventueel toe naar een oplossing of besluit. De themafase kan kort of lang
-    zijn, afhankelijk van het type gesprek. Of het nu gaat om een informeel gesprek,
-    een voortgangsgesprek of zelfs een slechtnieuwsgesprek, dit is het moment waarop
-    je \xE9cht de diepte ingaat en belangrijke zaken worden besproken\n\nTot slot
-    is er de slotfase, waarin je het gesprek afrondt. In deze fase vat je samen wat
-    er besproken is, en controleer je of de ander het eens is met deze samenvatting.
-    Als dat nodig is, pas je de samenvatting aan zodat beide partijen het gesprek
-    op dezelfde manier afsluiten. Eventuele afspraken worden herhaald en gecontroleerd.
-    Als het om belangrijke zaken gaat, is het verstandig om deze schriftelijk vast
-    te leggen, zodat er geen misverstanden ontstaan. Deze afronding zorgt ervoor
-    dat het gesprek op een duidelijke en respectvolle manier wordt afgesloten."
-  - "Theorie 4 : Communicatievoorwaarden met kinderen \r\n\r\nGoede communicatie
-    met kinderen vraagt om een zorgvuldige en respectvolle benadering. Kinderen zijn
-    vaak gevoelig voor sfeer, lichaamstaal en toon, en daarom is het belangrijk om
-    aan een aantal communicatievoorwaarden te voldoen. Door bewust om te gaan met
-    deze voorwaarden, cre\xEBer je een veilige en open setting waarin een kind zich
-    gehoord en begrepen voelt. \r\n\r\n  \r\n\r\nAllereerst is het belangrijk om
-    op dezelfde hoogte als het kind te gaan zitten, liefst op ooghoogte. Dit zorgt
-    ervoor dat je niet als \u2018de grote volwassene\u2019 boven het kind uittorent,
-    wat intimiderend kan zijn. Door letterlijk op gelijke hoogte te komen, laat je
-    zien dat je het kind serieus neemt en bereid bent om \xE9cht te luisteren. \r\n\r\n 
-    \r\n\r\nWanneer je met een kind praat, is oogcontact een krachtig hulpmiddel
-    \u2013 maar het is belangrijk om hierin de juiste balans te vinden. Kijk naar
-    het kind terwijl je spreekt, maar wissel het maken van oogcontact ook af. Te
-    veel staren kan ongemakkelijk zijn, terwijl te weinig oogcontact afstandelijk
-    kan overkomen. Let goed op de signalen van het kind en pas je gedrag daarop aan.
-    \r\n\r\n  \r\n\r\nEen ander belangrijk aspect is dat je het kind op zijn gemak
-    stelt. Een eerste stap hierin is om duidelijk uit te leggen waarom je met het
-    kind praat. Zeker als het gaat om een lastig of gevoelig onderwerp, helpt het
-    als het kind weet wat het doel van het gesprek is. Transparantie wekt vertrouwen.
-    \r\n\r\n  \r\n\r\nLuisteren is essentieel. Neem de tijd om echt te horen wat
-    het kind zegt, zonder meteen te onderbreken of te oordelen. Laat zien dat je
-    luistert, bijvoorbeeld door te knikken, samenvattingen te geven of doorvragen
-    te stellen. Kinderen voelen zich hierdoor serieus genomen. \r\n\r\n  \r\n\r\nDaarnaast
-    is het belangrijk om het kind te laten merken dat zijn of haar woorden er toe
-    doen. Laat met voorbeelden zien dat wat het kind zegt invloed heeft \u2013 of
-    het nu gaat om een verandering in het dagprogramma of het oplossen van een ruzie.
-    Zo leert het kind dat communiceren loont. \r\n\r\n  \r\n\r\nKinderen weten niet
-    altijd dat jij als volwassene niet kunt raden wat zij denken of willen. Vertel
-    ze daarom expliciet: \"Je moet me vertellen wat je vindt of wilt, want ik weet
-    het niet als jij het me niet zegt.\" Dit moedigt kinderen aan om hun gevoelens
-    en wensen onder woorden te brengen. \r\n\r\n  \r\n\r\nProbeer praten ook luchtig
-    te houden. Veel kinderen praten makkelijker terwijl ze spelen. Combineer het
-    gesprek met een activiteit, zoals tekenen, een spelletje of wandelen. Hierdoor
-    ontstaat een natuurlijke sfeer waarin het kind zich vrijer voelt om te praten.
-    \r\n\r\nSoms merk je dat een kind zijn aandacht verliest of zich terugtrekt.
-    Signaleer dit en benoem rustig dat je het gesprek op een later moment zult voortzetten.
-    Forceren heeft vaak een averechts effect; respecteer het tempo van het kind.
-    \r\n\r\n  \r\n\r\nNa een moeilijk gesprek is het belangrijk dat het kind de kans
-    krijgt om weer tot rust te komen. Zorg dat het daarna iets kan doen wat ontspanning
-    biedt \u2013 spelen, lezen of even alleen zijn. Zo voorkom je dat het kind met
-    spanning blijft zitten en krijgt het de ruimte om het gesprek te verwerken. \r\n\r\n 
-    \r\n\r\nDoor deze communicatievoorwaarden bewust toe te passen, bouw je aan een
-    vertrouwensband met het kind en vergroot je de kans op open, eerlijke gesprekken.
-    Je laat zien dat je niet alleen praat tegen, maar vooral praat m\xE9t het kind
-    \u2013 en dat maakt een wereld van verschil."
-  - 
-  - 
+  theoryStrings:
+  - Vul hier de theory toe.
+  - Vul hier de theory toe.
+  - Vul hier de theory toe.
+  - Vul hier de theory toe.
+  - Vul hier de theory toe.
+  - Vul hier de theory toe.
   buttons:
   - {fileID: 857996273}
   - {fileID: 501627682}
@@ -523,9 +399,9 @@ MonoBehaviour:
   - {fileID: 410921119}
   - {fileID: 1010921136}
   - {fileID: 352618033}
-  TheoryText: {fileID: 484842852}
-  ExitButton: {fileID: 1575921193}
-  BackButton: {fileID: 1301770622}
+  theoryText: {fileID: 484842852}
+  exitButton: {fileID: 1575921193}
+  backButton: {fileID: 1301770622}
 --- !u!1 &84628167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,7 +1340,6 @@ MonoBehaviour:
   quest:
   - questName: Boekenworm
     description: Lees 6 Theorie boeken
-    isCompleted: 0
     pointsRequirement: 15
   questMarkerSprite: {fileID: 247656927}
 --- !u!61 &264620671
@@ -4650,12 +4525,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbe740f32297bc4b8f76e8da40c3361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuestMenu: {fileID: 1995461604}
-  PointsMenu: {fileID: 2066515565}
-  OptionsMenu: {fileID: 952711149}
-  PointsText: {fileID: 1091434273}
-  activeQuests: []
-  completedQuests: []
+  questMenu: {fileID: 1995461604}
+  pointsMenu: {fileID: 2066515565}
+  optionsMenu: {fileID: 952711149}
+  pointsText: {fileID: 1091434273}
+  ActiveQuests:
+  - questName: test
+    description: fdswaegr
+    pointsRequirement: 0
+  CompletedQuests: []
 --- !u!4 &565451325
 Transform:
   m_ObjectHideFlags: 0
@@ -5853,7 +5731,7 @@ GameObject:
   - component: {fileID: 692296472}
   - component: {fileID: 692296471}
   m_Layer: 5
-  m_Name: Nextbutton
+  m_Name: NextPageButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7736,7 +7614,6 @@ MonoBehaviour:
   quest:
   - questName: Liefdesverlies
     description: Praat tegen Emma
-    isCompleted: 0
     pointsRequirement: 0
   questMarkerSprite: {fileID: 618428854}
 --- !u!61 &719619206
@@ -9294,7 +9171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &872664456
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9662,7 +9539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &952711150
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10460,6 +10337,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6467307242390432980, guid: 7177327a5391c3b409966dba0ec81dcc, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6467307242390432981, guid: 7177327a5391c3b409966dba0ec81dcc, type: 3}
       propertyPath: m_Name
       value: BookshelfZone (2)
@@ -10674,8 +10555,8 @@ MonoBehaviour:
   valueText: {fileID: 1183720679}
   volumeSlider: {fileID: 1119032131}
   audioSource: {fileID: 274184534}
-  VolumeIcon: {fileID: 45825732}
-  VolumeIcons:
+  volumeIcon: {fileID: 45825732}
+  volumeIcons:
   - {fileID: 21300000, guid: bfc874dd701d90e43bae82ee0989d7d7, type: 3}
   - {fileID: 21300000, guid: 1db4ff8e5a6e1164da44b502964493cb, type: 3}
 --- !u!114 &1119032131
@@ -12101,6 +11982,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6467307242390432980, guid: 7177327a5391c3b409966dba0ec81dcc, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6467307242390432981, guid: 7177327a5391c3b409966dba0ec81dcc, type: 3}
       propertyPath: m_Name
       value: BookshelfZone (1)
@@ -13435,7 +13320,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -13787,7 +13672,6 @@ MonoBehaviour:
   quest:
   - questName: Thoery Expert
     description: Lees 5 Boeken
-    isCompleted: 0
     pointsRequirement: 0
   questMarkerSprite: {fileID: 329137017}
 --- !u!61 &1844457927
@@ -13933,8 +13817,8 @@ RectTransform:
   m_Father: {fileID: 1033691318}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15911,6 +15795,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6467307242390432980, guid: 7177327a5391c3b409966dba0ec81dcc, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6467307242390432981, guid: 7177327a5391c3b409966dba0ec81dcc, type: 3}
       propertyPath: m_Name
       value: BookshelfZone

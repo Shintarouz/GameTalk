@@ -23,7 +23,7 @@ public class NPCScript : MonoBehaviour
         if (quest.Length > 0)
         {
             if (!questManager.IsQuestActive(quest[0].questName) &&
-            !questManager.completedQuests.Exists(q => q.questName == quest[0].questName))
+            !questManager.CompletedQuests.Exists(q => q.questName == quest[0].questName))
             {
                 questMarkerSprite.enabled = true;
             }
@@ -55,15 +55,15 @@ public class NPCScript : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.E) && playerIsClose && !DialogueManager.instance.dialoguePanel.activeSelf)
+        if (Input.GetKeyDown(KeyCode.E) && playerIsClose && !DialogueManager.Instance.dialoguePanel.activeSelf)
         {
-            DialogueManager.instance.StartDialogue(sentences);
+            DialogueManager.Instance.StartDialogue(sentences);
         }
 
 
-        if (Input.GetKeyDown(KeyCode.G) && DialogueManager.instance.isDialogueActive)
+        if (Input.GetKeyDown(KeyCode.G) && DialogueManager.Instance.isDialogueActive)
         {
-            DialogueManager.instance.EndDialogue();
+            DialogueManager.Instance.EndDialogue();
         }
     }
     
@@ -96,7 +96,7 @@ public class NPCScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsClose = false;
-            DialogueManager.instance.EndDialogue();
+            DialogueManager.Instance.EndDialogue();
         }
     }
 }

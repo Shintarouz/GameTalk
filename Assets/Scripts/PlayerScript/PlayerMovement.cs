@@ -24,12 +24,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (DialogueManager.instance != null && DialogueManager.instance.isDialogueActive)
+        if (DialogueManager.Instance != null && DialogueManager.Instance.isDialogueActive)
         {
             moveSpeed = 0;
             animator.SetFloat("Speed", 0);
             return;
-        }
+        } // if dialogue is playing make moveSpeed 0
         else
         {
             moveSpeed = originalMoveSpeed;
