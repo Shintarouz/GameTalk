@@ -37,9 +37,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 722235e59bd3640498b8151193f5a3e9, type: 3}
     - {fileID: 2800000, guid: d608f0237c2a6cd4c94fb858a905fa7c, type: 3}
     - {fileID: 2800000, guid: a984169da12633340825a8ee15d77544, type: 3}
-    - {fileID: 2800000, guid: 8a3f8ebde9f810040b95edda52abbb22, type: 3}
     - {fileID: 2800000, guid: 645c8f5acaa4a8c479d3617b64cf8c88, type: 3}
-    - {fileID: 2800000, guid: e5df916550b978a43a2ea8f5473a362a, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -7153,18 +7151,6 @@ SpriteAtlas:
   - {fileID: 1935634294, guid: fccbe794a0546c54b82f2f682e98a101, type: 3}
   - {fileID: -1893718705, guid: fccbe794a0546c54b82f2f682e98a101, type: 3}
   - {fileID: 199880675, guid: fccbe794a0546c54b82f2f682e98a101, type: 3}
-  - {fileID: 156158855, guid: e5df916550b978a43a2ea8f5473a362a, type: 3}
-  - {fileID: -2101270920, guid: e5df916550b978a43a2ea8f5473a362a, type: 3}
-  - {fileID: -900636142, guid: e5df916550b978a43a2ea8f5473a362a, type: 3}
-  - {fileID: 1833775806, guid: e5df916550b978a43a2ea8f5473a362a, type: 3}
-  - {fileID: 405157556, guid: e5df916550b978a43a2ea8f5473a362a, type: 3}
-  - {fileID: -838665031, guid: e5df916550b978a43a2ea8f5473a362a, type: 3}
-  - {fileID: -300147351, guid: e5df916550b978a43a2ea8f5473a362a, type: 3}
-  - {fileID: -492531506, guid: e5df916550b978a43a2ea8f5473a362a, type: 3}
-  - {fileID: 661738004, guid: e5df916550b978a43a2ea8f5473a362a, type: 3}
-  - {fileID: -1593225305, guid: e5df916550b978a43a2ea8f5473a362a, type: 3}
-  - {fileID: -180414464, guid: e5df916550b978a43a2ea8f5473a362a, type: 3}
-  - {fileID: 1482378188, guid: e5df916550b978a43a2ea8f5473a362a, type: 3}
   - {fileID: -249499891, guid: 722235e59bd3640498b8151193f5a3e9, type: 3}
   - {fileID: 248575835, guid: 722235e59bd3640498b8151193f5a3e9, type: 3}
   - {fileID: -1537163998, guid: 722235e59bd3640498b8151193f5a3e9, type: 3}
@@ -18830,14 +18816,6 @@ SpriteAtlas:
   - {fileID: -17046333, guid: a984169da12633340825a8ee15d77544, type: 3}
   - {fileID: -875290061, guid: a984169da12633340825a8ee15d77544, type: 3}
   - {fileID: -1128975676, guid: a984169da12633340825a8ee15d77544, type: 3}
-  - {fileID: -863926610, guid: 8a3f8ebde9f810040b95edda52abbb22, type: 3}
-  - {fileID: -210192639, guid: 8a3f8ebde9f810040b95edda52abbb22, type: 3}
-  - {fileID: 317952142, guid: 8a3f8ebde9f810040b95edda52abbb22, type: 3}
-  - {fileID: 1486579307, guid: 8a3f8ebde9f810040b95edda52abbb22, type: 3}
-  - {fileID: 2038276012, guid: 8a3f8ebde9f810040b95edda52abbb22, type: 3}
-  - {fileID: 1280155458, guid: 8a3f8ebde9f810040b95edda52abbb22, type: 3}
-  - {fileID: 323479702, guid: 8a3f8ebde9f810040b95edda52abbb22, type: 3}
-  - {fileID: -1618153542, guid: 8a3f8ebde9f810040b95edda52abbb22, type: 3}
   m_PackedSpriteNamesToIndex:
   - Interior_3_1513
   - Interior_3_488
@@ -25947,18 +25925,6 @@ SpriteAtlas:
   - Interior_1_2995
   - Interior_1_3398
   - Interior_1_3366
-  - Walls_7
-  - Walls_6
-  - Walls_5
-  - Walls_4
-  - Walls_3
-  - Walls_2
-  - Walls_1
-  - Walls_0
-  - Walls_9
-  - Walls_8
-  - Walls_10
-  - Walls_11
   - Interior_2_3023
   - Interior_2_3033
   - Interior_2_3043
@@ -37624,14 +37590,6 @@ SpriteAtlas:
   - Interior_4_144
   - Interior_4_3246
   - Interior_4_3214
-  - Jap_doors_7
-  - Jap_doors_6
-  - Jap_doors_5
-  - Jap_doors_4
-  - Jap_doors_3
-  - Jap_doors_2
-  - Jap_doors_1
-  - Jap_doors_0
   m_RenderDataMap: {}
   m_Tag: Interior Atlas
   m_IsVariant: 0

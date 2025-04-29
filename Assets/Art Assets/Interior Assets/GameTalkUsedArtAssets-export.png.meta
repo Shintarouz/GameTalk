@@ -6920,6 +6920,237 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: GameTalkUsedArtAssets-export_324
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 672
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a86c0d2a2e7d71e47b771f2268324633
+      internalID: -1907479059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameTalkUsedArtAssets-export_325
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 672
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cff24886e5a35144b9691ff7fe63c691
+      internalID: -1312190894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameTalkUsedArtAssets-export_326
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 656
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33db053f429ed6549b0c2193900f9986
+      internalID: 998574559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameTalkUsedArtAssets-export_327
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 656
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81e6a421b1fdce144ace421fefef37da
+      internalID: -1849282311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameTalkUsedArtAssets-export_328
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 640
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f934753a99fe43242a370ddd392a293e
+      internalID: -554585805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameTalkUsedArtAssets-export_329
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 640
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 979ee849298e29e499ae977925cf2ace
+      internalID: 2143411448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameTalkUsedArtAssets-export_330
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 640
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfa2aa0780cd4c14bae1f2634bb51a77
+      internalID: 207718100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameTalkUsedArtAssets-export_331
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 640
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08656d8465c3fe245b7751745b626815
+      internalID: 1914515290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameTalkUsedArtAssets-export_332
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 624
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a827585bb9472744bb9fa376b61968e
+      internalID: -2136952300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameTalkUsedArtAssets-export_333
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 624
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb9f82d638673d244a2b3dd739f62558
+      internalID: 566849115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameTalkUsedArtAssets-export_334
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 608
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ac2f7821b7b9c54fb2ebc914f631158
+      internalID: 596358189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -7182,7 +7413,18 @@ TextureImporter:
       GameTalkUsedArtAssets-export_321: 578663611
       GameTalkUsedArtAssets-export_322: 394341504
       GameTalkUsedArtAssets-export_323: -851791064
+      GameTalkUsedArtAssets-export_324: 1190891210
+      GameTalkUsedArtAssets-export_325: -1907479059
+      GameTalkUsedArtAssets-export_326: -1312190894
+      GameTalkUsedArtAssets-export_327: 998574559
+      GameTalkUsedArtAssets-export_328: -1849282311
+      GameTalkUsedArtAssets-export_329: -554585805
       GameTalkUsedArtAssets-export_33: 1656428642
+      GameTalkUsedArtAssets-export_330: 2143411448
+      GameTalkUsedArtAssets-export_331: 207718100
+      GameTalkUsedArtAssets-export_332: 1914515290
+      GameTalkUsedArtAssets-export_333: -2136952300
+      GameTalkUsedArtAssets-export_334: 566849115
       GameTalkUsedArtAssets-export_34: -100612623
       GameTalkUsedArtAssets-export_35: 1838493110
       GameTalkUsedArtAssets-export_36: 664199233

@@ -12,6 +12,11 @@ public class QuestManager : MonoBehaviour
     public TextMeshProUGUI PointsText;
     public List<Quest> activeQuests = new();
     public List<Quest> completedQuests = new();
+    
+    void Start()
+    {
+        DisplayPoints();
+    }
 
     private void Awake()
     {
