@@ -32,36 +32,46 @@ public class TheoryManager : MonoBehaviour
         switch (index)
         {
             case 0:
+                // foreach ( var quest in QuestManager.Instance.ActiveQuests)
+                // {
+                //     quest.completeTask("read book1");
+                // }
+                taskSetter("read book1");
                 BtnVisDisabler();
                 backButton.gameObject.SetActive(true);
                 theoryText.text = theoryStrings[0];
                 theoryText.gameObject.SetActive(true);
                 break;
             case 1:
+                taskSetter("read book2");
                 BtnVisDisabler();
                 backButton.gameObject.SetActive(true);
                 theoryText.text = theoryStrings[1];
                 theoryText.gameObject.SetActive(true);
                 break;
             case 2:
+                taskSetter("read book3");
                 BtnVisDisabler();
                 backButton.gameObject.SetActive(true);
                 theoryText.text = theoryStrings[2];
                 theoryText.gameObject.SetActive(true);
                 break;
             case 3:
+                taskSetter("read book4");
                 BtnVisDisabler();
                 backButton.gameObject.SetActive(true);
                 theoryText.text = theoryStrings[3];
                 theoryText.gameObject.SetActive(true);
                 break;
             case 4:
+                taskSetter("read book5");
                 BtnVisDisabler();
                 backButton.gameObject.SetActive(true);
                 theoryText.text = theoryStrings[4];
                 theoryText.gameObject.SetActive(true);
                 break;
             case 5:
+                taskSetter("read book6");
                 BtnVisDisabler();
                 backButton.gameObject.SetActive(true);
                 theoryText.text = theoryStrings[5];
@@ -74,6 +84,14 @@ public class TheoryManager : MonoBehaviour
                 Debug.Log("error");
                 break;
         }
+    }
+
+    public void taskSetter(string test)
+    {
+        foreach ( var quest in QuestManager.Instance.ActiveQuests)
+            {
+                quest.completeTask(test);
+            }
     }
     public void BackButtonFunction()
     {
