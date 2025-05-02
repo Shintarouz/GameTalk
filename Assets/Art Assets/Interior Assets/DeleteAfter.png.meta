@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a5dbda89be009dd4bace44aee2656dc5
+guid: 48d062679795806489a14f8c29f80670
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,94 +117,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shelvesdele_0
+      name: DeleteAfter_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c5a527dee7208ed4e8a143a3bc8cd412
-      internalID: 575377439
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shelvesdele_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 77e8692e8ad578c4dbc7174d80743361
-      internalID: -1626060870
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shelvesdele_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 84003ff1b40006c44a19ae178c3b7515
-      internalID: -1580116721
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shelvesdele_3
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 273b262b64b2b9c49bf6c7bdc5a79581
-      internalID: -1930392643
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shelvesdele_4
-      rect:
-        serializedVersion: 2
-        x: 0
+        x: 32
         y: 16
         width: 16
         height: 16
@@ -215,17 +131,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60002edc8afd68543b208836b0811992
-      internalID: 131167474
+      spriteID: 7ce3b3fb1f2d5244898247c9c8e4a725
+      internalID: -1461348034
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shelvesdele_5
+      name: DeleteAfter_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 48
         y: 16
         width: 16
         height: 16
@@ -236,14 +152,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 967589204b19eff4a81de66426c5812c
-      internalID: -789855911
+      spriteID: 9c4170df6e9437e4686e4b256361ea02
+      internalID: -1669721653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shelvesdele_6
+      name: DeleteAfter_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c3d6d99b24ec564d935652baffc36e7
+      internalID: -1842170872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeleteAfter_3
       rect:
         serializedVersion: 2
         x: 0
@@ -257,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3df73556ac4e89844abbd3d84846a220
-      internalID: -1074029091
+      spriteID: 35ba519b4fdaf8943b65e4aae7c6d869
+      internalID: -556629702
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shelvesdele_7
+      name: DeleteAfter_4
       rect:
         serializedVersion: 2
         x: 16
@@ -278,8 +215,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53fe8da69bc57384ab0e09ebda97df72
-      internalID: 1335042951
+      spriteID: 462fccf435ad866479d00c9b25f55193
+      internalID: 401033806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeleteAfter_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43c7dd1f0386d5f49a7bdfaa7c4d05e9
+      internalID: -1044054258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeleteAfter_6
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0400b945bdb7c7043b1656e55805805e
+      internalID: 1708323449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DeleteAfter_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a699a64343ebfb24191f6d078425d87c
+      internalID: -1447355317
       vertices: []
       indices: 
       edges: []
@@ -295,14 +295,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      shelvesdele_0: 575377439
-      shelvesdele_1: -1626060870
-      shelvesdele_2: -1580116721
-      shelvesdele_3: -1930392643
-      shelvesdele_4: 131167474
-      shelvesdele_5: -789855911
-      shelvesdele_6: -1074029091
-      shelvesdele_7: 1335042951
+      DeleteAfter_0: -1461348034
+      DeleteAfter_1: -1669721653
+      DeleteAfter_2: -1842170872
+      DeleteAfter_3: -556629702
+      DeleteAfter_4: 401033806
+      DeleteAfter_5: -1044054258
+      DeleteAfter_6: 1708323449
+      DeleteAfter_7: -1447355317
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
