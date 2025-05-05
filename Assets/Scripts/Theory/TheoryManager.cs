@@ -32,46 +32,46 @@ public class TheoryManager : MonoBehaviour
         switch (index)
         {
             case 0:
-                taskSetter("read book1");
                 BtnVisDisabler();
                 checkButton.gameObject.SetActive(true);
                 theoryText.text = theoryStrings[0];
                 theoryText.gameObject.SetActive(true);
+                QuestManager.Instance.taskSetter("read book1");
                 break;
             case 1:
-                taskSetter("read book2");
                 BtnVisDisabler();
                 checkButton.gameObject.SetActive(true);
                 theoryText.text = theoryStrings[1];
                 theoryText.gameObject.SetActive(true);
+                QuestManager.Instance.taskSetter("read book2");
                 break;
             case 2:
-                taskSetter("read book3");
                 BtnVisDisabler();
                 checkButton.gameObject.SetActive(true);
                 theoryText.text = theoryStrings[2];
                 theoryText.gameObject.SetActive(true);
+                QuestManager.Instance.taskSetter("read book3");
                 break;
             case 3:
-                taskSetter("read book4");
                 BtnVisDisabler();
                 checkButton.gameObject.SetActive(true);
                 theoryText.text = theoryStrings[3];
                 theoryText.gameObject.SetActive(true);
+                QuestManager.Instance.taskSetter("read book4");
                 break;
             case 4:
-                taskSetter("read book5");
                 BtnVisDisabler();
                 checkButton.gameObject.SetActive(true);
                 theoryText.text = theoryStrings[4];
                 theoryText.gameObject.SetActive(true);
+                QuestManager.Instance.taskSetter("read book5");
                 break;
             case 5:
-                taskSetter("read book6");
                 BtnVisDisabler();
                 checkButton.gameObject.SetActive(true);
                 theoryText.text = theoryStrings[5];
                 theoryText.gameObject.SetActive(true);
+                QuestManager.Instance.taskSetter("read book6");
                 break;
             default:
                 BtnVisDisabler();
@@ -82,13 +82,13 @@ public class TheoryManager : MonoBehaviour
         }
     }
 
-    public void taskSetter(string test)
-    {
-        foreach ( var quest in QuestManager.Instance.ActiveQuests)
-            {
-                quest.completeTask(test);
-            }
-    }
+    // public void taskSetter(string objective)
+    // {
+    //     foreach ( var quest in QuestManager.Instance.ActiveQuests)
+    //         {
+    //             quest.completeTask(objective);
+    //         }
+    // }
     public void BackButtonFunction()
     {
         checkButton.gameObject.SetActive(false);
@@ -97,11 +97,14 @@ public class TheoryManager : MonoBehaviour
         {
             btn.gameObject.SetActive(true);
         }
+        DialogueManager.Instance.DisplayQuests();
     }
 
     public void BtnsVisEnabler()
     {
+        BackButtonFunction();
         DialogueManager.Instance.DisplayTheory();
+        DialogueManager.Instance.DisplayQuests();
     }
 
     public void BtnVisDisabler()

@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public int scoreTester;
     public float moveSpeed;
     private float originalMoveSpeed;
+    public float sprintSpeed;
 
     public Rigidbody2D rb;
     public Animator animator;
@@ -32,7 +33,14 @@ public class PlayerMovement : MonoBehaviour
         } // if dialogue is playing make moveSpeed 0
         else
         {
-            moveSpeed = originalMoveSpeed;
+            if (Input.GetKey(KeyCode.LeftShift)) 
+            {
+                moveSpeed = sprintSpeed;
+            }
+            else
+            {
+                moveSpeed = originalMoveSpeed;
+            }
         }
         // if movement on horizontal axis = -1 or 1 ( or 0 )
         movement.x = Input.GetAxisRaw("Horizontal");

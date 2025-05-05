@@ -10,17 +10,13 @@ public class NPCScript : MonoBehaviour
     [SerializeField] private Quest[] quest;
     private bool playerIsClose;
     [SerializeField] private SpriteRenderer questMarkerSprite;
+    [SerializeField] private SpriteRenderer speakIcon;
+    public bool hasTalked = false;
+    
 
-    // public void QuestGiver()
-    // {
-    //     if (quest.Length > 0 && questManager != null)
-    //     {
-    //         Quest currentquest
-    //     }
-    // }
     public void UpdateQuestMarker()
     {
-        if (quest.Length > 0)
+        if (quest != null && quest.Length > 0)
         {
             if (!questManager.IsQuestActive(quest[0].questName) &&
             !questManager.CompletedQuests.Exists(q => q.questName == quest[0].questName))
@@ -41,23 +37,40 @@ public class NPCScript : MonoBehaviour
     {
         UpdateQuestMarker();
         PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
+        if (playerIsClose)
+        {
+            speakIcon.enabled = true;
+        }
+        else
+        {
+            speakIcon.enabled = false;
+        }
         if (Input.GetKeyDown(KeyCode.B) && playerIsClose)
         {
-            questManager.CompleteQuest(quest[0].questName);
+            speakIcon.enabled = true;
+            // questManager.CompleteQuest(quest[0].questName);
         }
 
         if (Input.GetKeyDown(KeyCode.C) && playerIsClose)
         {
-            if (playerMovement.scoreTester >= quest[0].pointsRequirement)
-            {
-                questManager.AddQuest(quest[0]);
-            }
+            speakIcon.enabled = false;
+            // if (playerMovement.scoreTester >= quest[0].pointsRequirement)
+            // {
+            //     questManager.AddQuest(quest[0]);
+            // }
         }
 
 
         if (Input.GetKeyDown(KeyCode.E) && playerIsClose && !DialogueManager.Instance.dialoguePanel.activeSelf)
         {
-            DialogueManager.Instance.StartDialogue(sentences);
+            DialogueManager.Instance.StartDialogue(sentences, quest.Length > 0 ? quest[0] : null);
+            if (!hasTalked && QuestManager.Instance.IsQuestActive("Ontmoeting"))
+            {
+                hasTalked = true;
+                QuestManager.Instance.taskSetter("NPC1");
+                DialogueManager.Instance.DisplayQuests();
+                Debug.Log("fired");
+            }
         }
 
 
@@ -66,18 +79,7 @@ public class NPCScript : MonoBehaviour
             DialogueManager.Instance.EndDialogue();
         }
     }
-    
-    public void QuestGiver()
-    {
-        if (quest != null)
-        {
-            questManager.AddQuest(quest[0]);
-        }
-        else
-        {
-            return;
-        }
-    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Checks if player is in range and sets bool to true if in range

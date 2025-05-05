@@ -22,7 +22,13 @@ public class QuestManager : MonoBehaviour
             Instance = this;
         }
     } 
-
+    public void taskSetter(string objective)
+    {
+        foreach ( var quest in ActiveQuests)
+            {
+                quest.completeTask(objective);
+            }
+    }
 
     private void Start()
     {
@@ -78,6 +84,7 @@ public class QuestManager : MonoBehaviour
         {
             CompletedQuests.Add(quest);
             ActiveQuests.Remove(quest);
+            // Activate rewards playerMovement.points = ++;
             DialogueManager.Instance.DisplayQuests();
         }
     }
@@ -93,9 +100,16 @@ public class QuestManager : MonoBehaviour
     
     public void AddQuest(Quest newQuest)
     {
-        if (ActiveQuests.Contains(newQuest) || CompletedQuests.Contains(newQuest)) return;
+        if (questMenu != null)
+        {
+            if (ActiveQuests.Contains(newQuest) || CompletedQuests.Contains(newQuest)) return;
+            ActiveQuests.Add(newQuest);
+            DialogueManager.Instance.DisplayQuests();
+        }
+    }
 
-        ActiveQuests.Add(newQuest);
-        DialogueManager.Instance.DisplayQuests();
+    public bool IsQuestCompleted(string questName)
+    {
+        return CompletedQuests.Exists(q => q.questName == questName);
     }
 }

@@ -6,7 +6,7 @@ using TMPro;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
-
+    private Quest currentQuest;
 
     [Header("Dialogue References")]
     public GameObject dialoguePanel;
@@ -77,11 +77,12 @@ public class DialogueManager : MonoBehaviour
         contButton3.SetActive(false);
         UpdateNextButtonText();
     }
-    public void StartDialogue(Sentences[] arraySentences)
+    public void StartDialogue(Sentences[] arraySentences, Quest quest)
     {
         index = 0;
         if (isDialogueActive) return;
 
+        currentQuest = quest;
         dialogueSentences = arraySentences;
         isDialogueActive = true;
         dialoguePanel.SetActive(true);
@@ -98,7 +99,7 @@ public class DialogueManager : MonoBehaviour
         PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
         if(index >= dialogueSentences.Length)
         {
-            playerMovement.scoreTester += 5;
+            if (currentQuest != null) {questManager.AddQuest(currentQuest);}
             questManager.DisplayPoints();
             EndDialogue();
             return;
@@ -144,7 +145,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (questManager.ActiveQuests.Count == 0) // if no active quests display "No Active Quests"
         {
-            missionText.text = "No Active Quests";
+            missionText.text = "Geen actieve missies momenteel";
             return;
         }
         
@@ -157,7 +158,10 @@ public class DialogueManager : MonoBehaviour
                 missionText.text += "\n";
             }
             Quest q = questManager.ActiveQuests[i];
-            missionText.text += $"Quest: {q.questName}\nDoel: {q.description}\n"; // \nStatus: {(q.isCompleted ? "Completed" : "Active")}
+            int taskCount = q.tasksToComplete != null ? q.tasksToComplete.Count : 0;
+            missionText.text += $"Quest: {q.questName}\nDoel: {q.description}\nTasks to complete: {taskCount}\n";
+            missionText.ForceMeshUpdate();
+            // missionText.text += $"Quest: {q.questName}\nDoel: {q.description}\n"; // \nStatus: {(q.isCompleted ? "Completed" : "Active")}
         }
     }
 
@@ -231,7 +235,7 @@ public class DialogueManager : MonoBehaviour
                 npcImage.sprite = npcIcons[0];
                 break;
             case 2:
-                nameText.text = "Police";
+                nameText.text = "Politie agent";
                 npcImage.sprite = npcIcons[1];
                 break;
             case 3:
@@ -241,6 +245,14 @@ public class DialogueManager : MonoBehaviour
             case 4:
                 nameText.text = "BeachBoy";
                 npcImage.sprite = npcIcons[3];
+                break;
+            case 5:
+                nameText.text = "Politie agent 2";
+                npcImage.sprite = npcIcons[4];
+                break;
+            case 6:
+                nameText.text = "Sarah";
+                npcImage.sprite = npcIcons[5];
                 break;
             default:
                 nameText.text = "Error";
@@ -252,6 +264,5 @@ public class DialogueManager : MonoBehaviour
     {
         nextPageButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Page {dialogueText.pageToDisplay}/{dialogueText.textInfo.pageCount}";
         dialogueText.ForceMeshUpdate();
-        Debug.Log("updates next button");
     }
 }
