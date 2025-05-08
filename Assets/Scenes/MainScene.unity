@@ -1686,14 +1686,9 @@ MonoBehaviour:
       je je boodschap duidelijk en met respect overbrengt?\r"
     rightAnswer: Start Gesprek
     wrongAnswer: Sluit Gesprek
-    hasAnswers: 0
-  - rightAnswerResponse: Wat fijn dat we hierover in gesprek kunnen, ik zie namelijk
-      dat Tess het echt heel leuk vindt om aan de slag te gaan met rekenopdrachtjes.
-    wrongAnswerResponse: "Je start direct met het geven van jou advies \u201CTess
-      kan inderdaad heel goed rekenen, dat is echt super knap. Zij loopt alleen wel
-      achter in haar sociaal-emotionele ontwikkeling. Ik denk dat het goed is dat
-      Tess vaker met andere kinderen gaat spelen\u201D.<page>Je houdt een social
-      talk \u201CFijn dat u er bent, hoe gaat het jullie en met Tess?\u201D"
+    hasAnswers: 1
+  - rightAnswerResponse: 'Goedemorgen, kom binnen dan kunnen we hierover in gesprek. '
+    wrongAnswerResponse: De inhoudt van dit gesprek is niet geschikt voor een sta-gesprek.
     npcID: 6
     sentence: Goedemorgen, ik wil graag iets met je delen. We zijn thuis heel fanatiek
       bezig met rekenen de laatste tijd en Tess doet het echt al heel goed. Ze oefent
@@ -1702,20 +1697,88 @@ MonoBehaviour:
     rightAnswer: Je laat vader binnen, verwelkomt hem en gaat zitten (zit-gesprek).
     wrongAnswer: Je bespreekt meteen de situatie met vader (sta-gesprek).
     hasAnswers: 1
-  - rightAnswerResponse: RIGHT REPSONSE 3
-    wrongAnswerResponse: WRONG RESPONSE 3
+  - rightAnswerResponse: 'Fijn dat u er bent, hoe gaat het met jullie en met Tess? '
+    wrongAnswerResponse: 'Tess kan inderdaad heel goed rekenen, dat is echt superknap.
+      Zij loopt alleen wel achter in haar sociaal-emotionele ontwikkeling. Ik denk
+      dat het goed is dat Tess vaker met andere kinderen gaat spelen. Dit is niet
+      het goede antwoord, je begint het gesprek altijd met een social talk i.p.v.
+      het meteen geven van je advies.  '
     npcID: 6
-    sentence: Hello (Question 3 )
-    rightAnswer: CORRECT3
-    wrongAnswer: WRONG3
+    sentence: Wat fijn dat we hierover in gesprek kunnen, ik zie namelijk dat Tess
+      het echt heel leuk vindt om aan de slag te gaan met rekenopdrachtjes
+    rightAnswer: 'Je houdt een social talk '
+    wrongAnswer: Je start direct met het geven van jouw advies.
     hasAnswers: 1
-  - rightAnswerResponse: R4
-    wrongAnswerResponse: W4
+  - rightAnswerResponse: "\u201CU gaf aan dat u het fijn zou vinden als wij, samen
+      met Tess, meer zouden oefenen met rekenen. Naar aanleiding daarvan leek het
+      mij fijn om hier iets uitgebreider over te spreken. We hebben voor dit gesprek
+      ongeveer 15 minuten. Heeft u nog andere punten die u tijdens dit gesprek wilt
+      bespreken?\u201D"
+    wrongAnswerResponse: "\u201CGaan jullie de komende vakantie nog iets leuks ondernemen?\u201D
+      Dit is niet het goede antwoord, je gaat het gesprek altijd veder met de planningsfase
+      i.p.v. het meteen geven van je advies. "
     npcID: 6
-    sentence: Hello (Question 4 )
-    rightAnswer: CORRECT4
-    wrongAnswer: WRONG4
+    sentence: 'Het gaat heel goed met ons en ook met Tess gaat het heel goed. We
+      oefenen elke dag, samen met Tess, de tafeltjes en dit vindt ze heel erg leuk. '
+    rightAnswer: 'Je gaat verder met de planningsfase. '
+    wrongAnswer: Je gaat verder met de aanloopfase.
     hasAnswers: 1
+  - rightAnswerResponse: Goed zo, je vertelt waar het gesprek over gaat en vraagt
+      na of ouders dit herkennen
+    wrongAnswerResponse: "Dit is niet het goede antwoord, je bekritiseert ouders
+      waardoor ze het gesprek hoogstwaarschijnlijk willen be\xEBindigen"
+    npcID: 6
+    sentence: Wat fijn dat we hier even tijd voor kunnen nemen. Tess oefent thuis
+      heel goed met rekenen en ik zou het fijn vinden als jullie hier ook meer mee
+      kunnen oefenen.
+    rightAnswer: "Start themafase: \u201CTess kan al inderdaad goed rekenen, dat
+      is superknap. Wij merken alleen dat ze het soms lastig vindt om contact te
+      maken met andere kinderen. Merken jullie dit thuis ook?\u201D."
+    wrongAnswer: "Start themafase: \u201CTess kan al inderdaad goed rekenen, dat
+      is superknap. Zij loopt alleen wel achter in haar sociaal-emotionele ontwikkeling.
+      U vraagt als ouders ook wel veel van haar\u201D."
+    hasAnswers: 1
+  - rightAnswerResponse: 'Goed zo, je vertelt je advies op een opbouwende manier. '
+    wrongAnswerResponse: Dit is niet het goede antwoord, je geeft een advies, maar
+      bekritiseert de ouders ook.
+    npcID: 6
+    sentence: 'Hier schrik ik eerlijk gezegd wel van. Tess heeft geen broers of zussen
+      en daarom gaan we vaak naar de speeltuin toe zodat ze daar in contact komt
+      met andere kinderen. Nu je het zo zegt merk ik inderdaad wel dat ze dan vaak
+      alleen speelt. Kunnen wij hierin iets betekenen? Wat is jullie advies?
+
+'
+    rightAnswer: "Advies: \u201CWat jullie zouden kunnen doen is eens kijken of Tess
+      kan starten met een teamsport of haar wat vaker met andere kinderen af laten
+      spreken. Wij kunnen jullie hierin ook begeleiden als jullie dat zouden willen.\u201D"
+    wrongAnswer: "Advies: \u201CMisschien kunt u minder tijd stoppen in het oefenen
+      van rekenspellen en Tess meer met andere kinderen laten spelen.\u201D"
+    hasAnswers: 1
+  - rightAnswerResponse: Goed zo, je vat het gesprek samen, bespreekt wat je hebt
+      afgesproken en checkt bij de ouder of dit klopt.
+    wrongAnswerResponse: Dit is niet het goede antwoord, aan het eind van een gesprek
+      vat je altijd kort samen wat je besproken hebt.
+    npcID: 6
+    sentence: 'Bedankt voor jullie advies. We zullen eens rond gaan kijken welke
+      mogelijkheden er zijn voor een teamsport en zullen haar aanmoedigen om vaker
+      te gaan spelen met andere kinderen. '
+    rightAnswer: "Slotfase: \u201CWat fijn om te horen. Kort samengevat hebben we
+      zojuist besproken dat Tess al heel goed kan rekenen, maar het soms nog lastig
+      vindt om contact te maken met andere kinderen. Naar aanleiding daarvan gaf
+      u ook aan dat u merkt dat hij vaak alleen speelt en daarom heb ik het advies
+      gegeven om samen met Tess te kijken naar een teamsport. Daarnaast kan het ook
+      helpen om Tess vaker met andere kinderen af te laten spreken. Klopt dat?\u201D "
+    wrongAnswer: "Slotfase: \u201CBedankt voor het gesprek en een fijne avond.\u201D"
+    hasAnswers: 0
+  - rightAnswerResponse: Verder
+    wrongAnswerResponse: Verder
+    npcID: 6
+    sentence: Dat klopt inderdaad, bedankt voor het fijne gesprek.
+    rightAnswer: "Slotfase: \u201CDan wil ik u hartelijk bedanken voor het gesprek
+      en hoor ik het graag wanneer er vragen zijn.\u201D"
+    wrongAnswer: "Slotfase: \u201CDan wil ik u hartelijk bedanken voor het gesprek
+      en hoor ik het graag wanneer er vragen zijn.\u201D"
+    hasAnswers: 0
   questManager: {fileID: 565451324}
   quest:
   - questName: Ontmoeting
@@ -10211,7 +10274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 732196975}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.59, y: -12.8, z: 0}
+  m_LocalPosition: {x: 0.01, y: -13.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17691,17 +17754,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sentences:
-  - rightAnswerResponse: 
-    wrongAnswerResponse: 
-    npcID: 0
-    sentence: Banaan
-    rightAnswer: Ja
-    wrongAnswer: Nee
+  - rightAnswerResponse: Gesprek Begint
+    wrongAnswerResponse: Maakt niet uit
+    npcID: 1
+    sentence: "In dit gesprek oefen je met de verschillende gespreksfases. De vader
+      van Tess komt haar \u2019s ochtends brengen en raakt met jou in gesprek. Tijdens
+      het gesprek vertelt hij enthousiast dat Tess, zijn dochter van vier jaar, al
+      heel goed kan rekenen. Hij oefent thuis dagelijks met de tafels en vader vraagt
+      of jij hier ook mee aan de slag wilt gaan<page>Jij kent Tess als een gevoelig
+      en rustig meisje. Je hebt gemerkt dat haar ouders best veel van haar vragen,
+      en dat ze daardoor soms overvraagd wordt. In jouw ogen is Tess nog niet toe
+      aan het oefenen van tafels. Je vindt het op dit moment belangrijker dat zij
+      zich op sociaal vlak verder ontwikkelt, omdat je merkt dat zij vaak alleen
+      speelt en weinig contact zoekt met andere kinderen.<page>In dit gesprek met
+      vader wil je op een zorgvuldige manier je observaties en zorgen delen. Je probeert
+      samen met hem te kijken wat op dit moment het beste aansluit bij de ontwikkeling
+      van Tess. Hoe ga je dit gesprek aan, en hoe zorg je dat je je boodschap duidelijk
+      en met respect overbrengt?\r\n"
+    rightAnswer: Start Gesprek
+    wrongAnswer: Sluit Gesprek
     hasAnswers: 0
   - rightAnswerResponse: 
     wrongAnswerResponse: 
-    npcID: 0
-    sentence: Banaan1
+    npcID: 5
+    sentence: 'Goedemorgen, ik wil graag iets met je delen. We zijn thuis heel fanatiek
+      bezig met rekenen de laatste tijd en Tess doet het echt al heel goed. Ze oefent
+      elke dag met de tafeltjes en kent sommige tafels al bijna uit haar hoofd. Zou
+      jij daar ook wat vaker met haar naar kunnen kijken? '
     rightAnswer: Ja1
     wrongAnswer: Nee1
     hasAnswers: 0
